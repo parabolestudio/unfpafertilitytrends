@@ -6,6 +6,8 @@ function vis1() {
     d3.select("#title1").html(title);
     d3.select("#subtitle1").html(subtitle);
     d3.select("#source1").html(source);
+    const wrapper = d3.select(".wrapper");
+    const tooltip = d3.select(".tooltip");
 
     const width = 750;
     const height = 300;
@@ -85,6 +87,8 @@ function vis1() {
                 .attr("y", yScale.bandwidth() - 5)
                 .text(d => d.Country)
 
+        console.log(lineData)
+
         gCountries.selectAll(".country-bar")
             .data(d => [d])
             .join("rect")
@@ -94,7 +98,24 @@ function vis1() {
                 .attr("y", 0)
                 .attr("width", d => xScale(d.Value) - xScale(0))
                 .attr("height", yScale.bandwidth())
-                .text(d => d.Country)
+                .on("mousemove", (evt, d) => {
+                    console.log(d)
+                    const [x, y] = d3.pointer(evt, wrapper.node());
+                    tooltip
+                        .style("display", "block")
+                        .style("top", `${y}px`)
+                        .style("left", `${x + 8}px`)
+                        .html(`
+                            <p class="country">${d.Country}</p>
+                            <p class="value">${d.Value}</p>
+                            <p>LAC: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
+                            <p>World: ${lineData.find(ld => ld.Country === 'World').Value}</p>
+                        `)
+                    
+                })
+                .on("mouseout", () => {
+                    tooltip.style("display", "none")
+                })
 
         gCountries.selectAll(".country-number")
             .data(d => [d])
@@ -107,7 +128,6 @@ function vis1() {
                 .attr("x", d => xScale(d.Value) + 6)
                 .attr("y", yScale.bandwidth() - 5)
                 .text(d => d.Country === "Peru" ? `${d.Value}` : '')
-
 
         const gAverages = svg.selectAll(".average")
             .data(lineData)
