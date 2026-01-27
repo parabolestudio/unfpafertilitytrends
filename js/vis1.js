@@ -38,7 +38,6 @@ function vis1() {
         const barData = data.filter(d => d.Type === 'country');
         const lineData = data.filter(d => d.Type === 'average');
         const countries = getUniques(barData, "Country");
-        console.log(countries)
 
         const xScale = d3.scaleLinear()
             .domain([0, 100])
@@ -107,11 +106,17 @@ function vis1() {
                             <p class="value">${d.Value}</p>
                             <p>LAC: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
                             <p>World: ${lineData.find(ld => ld.Country === 'World').Value}</p>
-                        `)
+                        `);
+
+                    tooltipCircle
+                        .attr("cx", evt.offsetX)
+                        .attr("cy", evt.offsetY)
+                        .style("opacity", 1);
                     
                 })
                 .on("mouseout", () => {
-                    tooltip.style("display", "none")
+                    tooltip.style("display", "none");
+                     tooltipCircle.style("opacity", 0);
                 })
 
         gCountries.selectAll(".country-number")
@@ -153,7 +158,14 @@ function vis1() {
                 .attr("text-anchor", "start")
                 .attr("x", 6)
                 .attr("y", yScale.range()[1])
-                .text(d => d.Country)
+                .text(d => d.Country);
+
+        const tooltipCircle = svg.append("circle")
+            .attr("class", "tooltip-circle")
+            .attr("r", 4)
+            .style("stroke", "#000")
+            .style("fill", "#fff")
+            .style("opacity", 0);
     })
 }
 
