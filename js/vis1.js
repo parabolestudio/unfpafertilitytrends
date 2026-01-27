@@ -87,8 +87,6 @@ function vis1() {
                 .attr("y", yScale.bandwidth() - 5)
                 .text(d => d.Country)
 
-        console.log(lineData)
-
         gCountries.selectAll(".country-bar")
             .data(d => [d])
             .join("rect")
@@ -99,7 +97,6 @@ function vis1() {
                 .attr("width", d => xScale(d.Value) - xScale(0))
                 .attr("height", yScale.bandwidth())
                 .on("mousemove", (evt, d) => {
-                    console.log(d)
                     const [x, y] = d3.pointer(evt, wrapper.node());
                     tooltip
                         .style("display", "block")
