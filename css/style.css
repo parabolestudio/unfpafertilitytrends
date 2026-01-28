@@ -50,12 +50,17 @@ body {
     margin: 0;
 }
 
-.tooltip p.value {
+.tooltip p.value,
+.tooltip p.country-map {
     margin-bottom: 12px;
 }
 
 .tooltip p.country {
     color: var(--dark-orange);
+    font-weight: 700;
+}
+
+.tooltip p.bold {
     font-weight: 700;
 }
 

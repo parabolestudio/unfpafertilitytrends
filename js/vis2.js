@@ -27,8 +27,8 @@ function vis2() {
     const widthColorbar = 175;
     const xHighlighted = 600;
 
-    // const interpolator = d3.piecewise(colormap);
-    const interpolator = d3.interpolateRgbBasis(colormap);
+    const interpolator = d3.piecewise(colormap);
+    // const interpolator = d3.interpolateRgbBasis(colormap);
     const colorScale = d3.scaleSequential()
         .interpolator(interpolator)
         .domain(colorExtent)
@@ -90,7 +90,29 @@ function vis2() {
             .join("path")
                 .attr("fill", d => colorScale(d.properties.value))
                 .attr("stroke", "#fff")
-                .attr('d', path);
+                .attr('d', path)
+                .on("mousemove", (evt, d) => {
+                    const [x, y] = d3.pointer(evt, wrapper.node());
+                    tooltip
+                        .style("display", "block")
+                        .style("top", `${y}px`)
+                        .style("left", `${x + 8}px`)
+                        .html(`
+                            <p class="country country-map">${d.properties.departamento}</p>
+                            <p>Number of live births</p>
+                            <p class="bold">${d.properties.value}</p>
+                        `);
+
+                    tooltipCircle
+                        .attr("cx", evt.offsetX)
+                        .attr("cy", evt.offsetY)
+                        .style("opacity", 1);
+                    
+                })
+                .on("mouseout", () => {
+                    tooltip.style("display", "none");
+                    tooltipCircle.style("opacity", 0);
+                });
 
         const gBar = svg.append('g');
 
@@ -178,6 +200,13 @@ function vis2() {
                 .style("font-weight", 400)
                 .style("font-size", '14px')
                 .text(d => d.value);
+
+        const tooltipCircle = svg.append("circle")
+            .attr("class", "tooltip-circle")
+            .attr("r", 4)
+            .style("stroke", "#000")
+            .style("fill", "#fff")
+            .style("opacity", 0);
 
     })
 }

@@ -116,7 +116,7 @@ function vis1() {
                 })
                 .on("mouseout", () => {
                     tooltip.style("display", "none");
-                     tooltipCircle.style("opacity", 0);
+                    tooltipCircle.style("opacity", 0);
                 })
 
         gCountries.selectAll(".country-number")
