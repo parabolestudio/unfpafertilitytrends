@@ -22,6 +22,9 @@ function vis6() {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
+    d3.select("#bubble6")
+        .style("top", "50px")
+        .style("left", "470px");
 
     const data = {
         'National estimate': 51,

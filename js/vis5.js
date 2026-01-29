@@ -24,6 +24,10 @@ function vis5() {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
+    d3.select("#bubble5")
+        .style("top", "230px")
+        .style("left", "460px");
+
     Promise.all([
         d3.csv("./data/vis5.csv")
     ])
