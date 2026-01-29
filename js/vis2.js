@@ -19,7 +19,7 @@ function vis2() {
     }
 
 
-    const colormap = ["#FFD0B2", "#F96000", "#702B00"];
+    const colormap = ["#FFE8D9", "#FFD0B2", "#F96000", "#702B00"];
     const colorExtent = [0, 45];
     const xColorbar = 4;
     const yColorbar = height - 60;
@@ -122,7 +122,7 @@ function vis2() {
         linearGradient.selectAll("stop")
             .data(colormap)
             .join("stop")
-                .attr("offset", (_, i) => i * 0.5)
+                .attr("offset", (_, i) => i * (1 / colormap.length))
                 .attr("stop-color", d => d);
 
         gBar.append("text")
@@ -163,9 +163,9 @@ function vis2() {
                 .attr("class", "centroid")
                 .attr("cx", d => d.x)
                 .attr("cy", d => d.y)
-                .attr("r", 4)
+                .attr("r", 2)
                 .style("fill", black)
-                .style("opacity", 0.2);
+                .style("opacity", 1);
 
         gCountries.selectAll(".line")
             .data(d => [d])
@@ -176,8 +176,9 @@ function vis2() {
                 .attr("y1", d => d.y)
                 .attr("y2", d => d.y)
                 .attr("stroke", black)
-                .attr("stroke-dasharray", [1,3])
-                .style("opacity", 0.2);
+                .attr("stroke-width", '0.5px')
+                // .attr("stroke-dasharray", [2,4])
+                // .style("opacity", 0.2);
 
         gCountries.selectAll(".dep")
             .data(d => [d])

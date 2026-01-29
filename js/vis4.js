@@ -88,6 +88,7 @@ function vis4() {
         function updateVis() {
             const xTicks = selectedYear === '2024'
                 ? [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
+                // ? [0, 1, 2, 3, 4, 5, 6, 7]
                 : [0, 1, 2, 3, 4, 5, 6, 7];
             const xExtent = [xTicks[0], xTicks[xTicks.length - 1]];
 

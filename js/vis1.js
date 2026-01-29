@@ -52,7 +52,7 @@ function vis1() {
             .attr('class', "x-axis axis")
             .attr("transform", `translate(0, ${margin.top - 20})`);
 
-        const xTicks = [0, 20, 40, 60, 80, 100]
+        const xTicks = [0, 20, 40, 60, 80]
         
         xAxis.append("line")
             .attr("x1", xScale(xTicks[0]))
