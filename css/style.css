@@ -3,6 +3,7 @@
     --orange: #F96000;
     --dark-orange: #AE4300;
     --gray: #EFF1F7;
+    --mid-orange: #FB904D;
 }
 
 
@@ -64,9 +65,14 @@ body {
     background-color: var(--gray);
 }
 
-.dark-orange-circle {
+.orange-circle {
     border: 0.5px solid var(--orange);
     background-color: var(--orange);
+}
+
+.mid-orange-circle {
+    border: 0.5px solid var(--mid-orange);
+    background-color: var(--mid-orange);
 }
 
 .source {
@@ -121,4 +127,8 @@ body {
 .tooltip-circle,
 .average-line {
     pointer-events: none;
+}
+
+.uppercase {
+    text-transform: uppercase;;
 }
