@@ -103,7 +103,7 @@ function vis1() {
                         .style("left", `${x + 8}px`)
                         .html(`
                             <p class="country">${d.Country}</p>
-                            <p class="value">${d.Value}</p>
+                            <p class="value mb">${d.Value}</p>
                             <p>LAC: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
                             <p>World: ${lineData.find(ld => ld.Country === 'World').Value}</p>
                         `);

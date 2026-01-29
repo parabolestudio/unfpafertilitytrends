@@ -1,6 +1,8 @@
 :root {
     --black: #131619;
+    --orange: #F96000;
     --dark-orange: #AE4300;
+    --gray: #EFF1F7;
 }
 
 
@@ -27,6 +29,44 @@ body {
     font-size: 14px;
     line-height: 100%;
     letter-spacing: 0%;
+    margin-bottom: 20px;
+}
+
+.legend {
+    margin-bottom: 20px;
+}
+
+.legend > * {
+    display: inline-block;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+.legend-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 14px;
+}
+
+.legend-label {
+    margin-right: 10px;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    margin-right: 4px;
+}
+
+.gray-circle {
+    border: 0.5px solid var(--black);
+    background-color: var(--gray);
+}
+
+.dark-orange-circle {
+    border: 0.5px solid var(--orange);
+    background-color: var(--orange);
 }
 
 .source {
@@ -34,6 +74,7 @@ body {
     font-size: 12px;
     line-height: 100%;
     letter-spacing: 0%;
+    margin-top: 21px;
 }
 
 .tooltip {
@@ -44,14 +85,14 @@ body {
     font-size: 14px;
     display: none;
     background-color: #FFF;
+    max-width: 175px;
 }
 
 .tooltip p {
     margin: 0;
 }
 
-.tooltip p.value,
-.tooltip p.country-map {
+.tooltip p.mb {
     margin-bottom: 12px;
 }
 

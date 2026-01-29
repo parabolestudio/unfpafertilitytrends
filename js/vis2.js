@@ -98,7 +98,7 @@ function vis2() {
                         .style("top", `${y}px`)
                         .style("left", `${x + 8}px`)
                         .html(`
-                            <p class="country country-map">${d.properties.departamento}</p>
+                            <p class="country mb">${d.properties.departamento}</p>
                             <p>Number of live births</p>
                             <p class="bold">${d.properties.value}</p>
                         `);
