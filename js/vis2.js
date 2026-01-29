@@ -51,6 +51,10 @@ function vis2() {
 
     const highlighted = ['Loreto', 'San Martín', 'Ucayali', 'Madre de Dios'];
 
+    d3.select("#bubble2")
+        .style("top", "320px")
+        .style("left", "0");
+
     Promise.all([
         d3.csv("./data/vis2.csv"),
         d3.json("./data/peru.geojson")

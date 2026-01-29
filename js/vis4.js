@@ -38,7 +38,7 @@ function vis4() {
 
     d3.select("#bubble4")
         .style("top", "150px")
-        .style("left", "560px")
+        .style("left", "560px");
 
     Promise.all([
         d3.csv("./data/vis4.csv")
