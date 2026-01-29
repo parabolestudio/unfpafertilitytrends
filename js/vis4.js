@@ -36,6 +36,10 @@ function vis4() {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
+    d3.select("#bubble4")
+        .style("top", "150px")
+        .style("left", "560px")
+
     Promise.all([
         d3.csv("./data/vis4.csv")
     ])

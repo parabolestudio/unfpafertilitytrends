@@ -83,6 +83,41 @@ body {
     margin-top: 21px;
 }
 
+.callout {
+    position: absolute;
+    max-width: 150px;
+}
+
+.callout p {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0%;
+    color: var(--black);
+    margin: 0;
+}
+
+.callout p.callout-title {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0%;
+    color: var(--orange);
+    margin-bottom: 8px;
+}
+
+.callout::before {
+    z-index: -1;
+    position: relative;
+    top: 24px;
+    left: -34px;
+    content: url("../assets/bubble.svg");
+    width: 44px;
+    height: 50px;
+}
+
 .tooltip {
     position: absolute;
     border: 1px solid #000;

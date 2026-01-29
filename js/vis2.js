@@ -20,6 +20,7 @@ function vis2() {
 
 
     const colormap = ["#FFE8D9", "#FFD0B2", "#F96000", "#702B00"];
+    const stops = [0, 0.25, 0.5, 1];
     const colorExtent = [0, 45];
     const xColorbar = 4;
     const yColorbar = height - 60;
@@ -122,7 +123,7 @@ function vis2() {
         linearGradient.selectAll("stop")
             .data(colormap)
             .join("stop")
-                .attr("offset", (_, i) => i * (1 / colormap.length))
+                .attr("offset", (_, i) => stops[i])
                 .attr("stop-color", d => d);
 
         gBar.append("text")
