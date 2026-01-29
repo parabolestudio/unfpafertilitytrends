@@ -176,7 +176,7 @@ function vis2() {
                 .attr("y1", d => d.y)
                 .attr("y2", d => d.y)
                 .attr("stroke", black)
-                .attr("stroke-dasharray", [2,2])
+                .attr("stroke-dasharray", [1,3])
                 .style("opacity", 0.2);
 
         gCountries.selectAll(".dep")

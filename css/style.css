@@ -111,6 +111,29 @@ body {
     font-weight: 700;
 }
 
+span.button {
+    padding: 6px 12px;
+    background-color: var(--gray);
+    cursor: pointer;
+}
+
+span.button.checked {
+    background-color: var(--black);
+    color: #fff;
+    font-weight: 700;
+}
+
+span.button:first-child {
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-right: -4px;
+}
+
+span.button:last-child {
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
 .axis text {
     font-family: "Atkinson Hyperlegible", sans-serif;
     font-size: 14px;
