@@ -113,6 +113,21 @@ body {
     max-width: 150px;
 }
 
+.callout7 {
+    position: relative;
+    max-width: 100vw;
+    width: 390px;
+    margin: -60px auto 0 auto;
+}
+
+
+span.big-number {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 700;
+    font-size: 64px;
+    color: var(--orange);
+}
+
 .callout p {
     font-family: Roboto;
     font-weight: 400;
@@ -141,6 +156,11 @@ body {
     content: url("../assets/bubble.svg");
     width: 44px;
     height: 50px;
+}
+
+.callout7::before {
+    top: -14px;
+    left: 28px;
 }
 
 .tooltip {

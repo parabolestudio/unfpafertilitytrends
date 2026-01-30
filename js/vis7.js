@@ -87,7 +87,7 @@ function vis7() {
         const labels = svg.selectAll(".rect-label")
             .data(groupData)
             .join("text")
-                .attr("class", "rect-label uppercase")
+                .attr("class", "rect-label")
                 .attr("x", d => 
                     d.type === 'Healthcare'
                         ? xScale(d.cumulative) + d.shift + 6 * xText
