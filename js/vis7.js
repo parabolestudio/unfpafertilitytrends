@@ -24,6 +24,11 @@ function vis7() {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
+    if (isMobile) {
+        d3.select("#legend7 .legend-title").html('')
+            .style("margin-right", "0")
+    }
+
     Promise.all([
         d3.csv("./data/vis7.csv")
     ])
@@ -31,8 +36,8 @@ function vis7() {
 
         const rectHeight = 130;
         const strokeWidth = 5;
-        const xText = 4;
-        const yText = 20;
+        const xText = isMobile ? 0.5 : 4;
+        const yText = isMobile ? 16 : 20;
 
         const data = rawData[0];
 
@@ -84,24 +89,66 @@ function vis7() {
                 .attr("height", rectHeight)
                 .attr("fill", d => d.who === "Women" ? orange : midorange);
 
+        const specials = isMobile
+            ? {
+                "Healthcare": "left",
+                "Education": "right",
+                "Tax revenue loss": "left"
+            }
+            : {
+                "Healthcare": "right"
+            };
+
+        const dxText = isMobile ? 10 : 2 * xText;
+
+        const specialLabels = Object.keys(specials);
+
+        const getX = (d) => {
+            if (isMobile) {
+                const shift = specials[d.type] === 'right' ? 4 : -4;
+                return d.type === 'Tax revenue loss'
+                        ? xScale(d.cumulative) + d.shift + 70 * xText + shift
+                        : xScale(d.cumulative) + d.shift + 12 * xText + shift
+            } else {
+                return d.type === 'Healthcare'
+                        ? xScale(d.cumulative) + d.shift + 6 * xText
+                        : xScale(d.cumulative) + d.shift + 2 * xText
+            }
+        }
+
+        const getY = (d) => {
+            if (isMobile) {
+                return specialLabels.includes(d.type)
+                        ? height - margin.bottom - rectHeight - 2.5 * yText
+                        : height - margin.bottom - rectHeight + yText
+            } else {
+                return specialLabels.includes(d.type)
+                        ? height - margin.bottom - rectHeight - yText
+                        : height - margin.bottom - rectHeight + yText
+            }
+        }
+
+        const getTextAnchor = (d) => {
+            if (isMobile) {
+                return ['Healthcare', 'Tax revenue loss'].includes(d.type)
+                    ? "end"
+                    : "begin";
+            } else {
+                return "begin";
+            }
+        }
+
         const labels = svg.selectAll(".rect-label")
             .data(groupData)
             .join("text")
                 .attr("class", "rect-label")
-                .attr("x", d => 
-                    d.type === 'Healthcare'
-                        ? xScale(d.cumulative) + d.shift + 6 * xText
-                        : xScale(d.cumulative) + d.shift + 2 * xText
-                )
-                .attr("y", d => 
-                    d.type === 'Healthcare'
-                        ? height - margin.bottom - rectHeight - yText
-                        : height - margin.bottom - rectHeight + yText
-                )
+                .attr("x", getX)
+                .attr("y", getY)
                 .style("font-size", "14px")
                 .style("font-weight", 700)
                 .style("font-family", "Atkinson Hyperlegible")
-                .attr("fill", d => d.type === 'Healthcare' ? "#000" : "#fff");
+                .attr("text-anchor", getTextAnchor)
+                .attr("fill", d => specialLabels.includes(d.type) ? "#000" : "#fff");
 
         labels.selectAll("tspan")
             .data(d => d.words.map(w => ({
@@ -111,131 +158,81 @@ function vis7() {
                 type: d.type
             })))
             .join("tspan")
-                .attr("x", d => 
-                    d.type === 'Healthcare'
-                        ? xScale(d.cumulative) + d.shift + 6 * xText
-                        : xScale(d.cumulative) + d.shift + 2 * xText
-                )
+                .attr("x", getX)
                 .attr("dy", (_, i) => i === 0 ? '0': `16px`)
                 .text(d => d.word);
 
+        const getXTranslate = (d) => {
+            if (isMobile) {
+                return d.type === 'Tax revenue loss'
+                        ? xScale(d.cumulative) + d.shift + 78 * xText
+                        : xScale(d.cumulative) + d.shift + 10 * xText
+            } else {
+                return xScale(d.cumulative) + d.shift + 4 * xText
+            }
+        }
+
+        const getYTranslate = (d) => {
+            return getY(d) - 12;
+        }
+
         const hcLabel = svg.selectAll(".hc")
-            .data(groupData.filter(d => d.type === 'Healthcare'))
+            .data(groupData.filter(d => specialLabels.includes(d.type)))
             .join("g")
                 .attr("class", "hc")
-                .attr("transform", d => `translate(${xScale(d.cumulative) + d.shift + 4 * xText}, ${height - margin.bottom - rectHeight + yText})`);
+                .attr("transform", d => `translate(${getXTranslate(d)}, 0)`);
 
         hcLabel.append('circle')
             .attr("cx", 0)
-            .attr("cy", 0)
+            .attr("cy", height - margin.bottom - rectHeight + yText)
             .attr("r", 2)
             .attr("fill", black);
 
         hcLabel.append('line')
             .attr("x1", 0)
             .attr("x2", 0)
-            .attr("y1", 0)
-            .attr("y2", -2 * yText - 12)
+            .attr("y1", height - margin.bottom - rectHeight + yText)
+            .attr("y2", getYTranslate)
             .attr("stroke", black)
             .attr("stroke-width", "0.5px");
 
-        const dy = 20;
-        const dx = 200;
+        if(!isMobile) {
+            const dy = 20;
+            const dx = 200;
 
-        svg.append("line")
-            .attr("x1", 0)
-            .attr("x2", 0)
-            .attr("y1", height - margin.bottom - rectHeight)
-            .attr("y2", height - margin.bottom + dy)
-            .attr("stroke", black)
-            .attr("stroke-width", "0.5px");
+            svg.append("line")
+                .attr("x1", 0)
+                .attr("x2", 0)
+                .attr("y1", height - margin.bottom - rectHeight)
+                .attr("y2", height - margin.bottom + dy)
+                .attr("stroke", black)
+                .attr("stroke-width", "0.5px");
 
-        svg.append("line")
-            .attr("x1", width)
-            .attr("x2", width)
-            .attr("y1", height - margin.bottom - rectHeight)
-            .attr("y2", height - margin.bottom + dy)
-            .attr("stroke", black)
-            .attr("stroke-width", "0.5px");
+            svg.append("line")
+                .attr("x1", width)
+                .attr("x2", width)
+                .attr("y1", height - margin.bottom - rectHeight)
+                .attr("y2", height - margin.bottom + dy)
+                .attr("stroke", black)
+                .attr("stroke-width", "0.5px");
 
-        svg.append("line")
-            .attr("x1", 0)
-            .attr("x2", dx)
-            .attr("y1", height - margin.bottom + dy)
-            .attr("y2", height - dy)
-            .attr("stroke", black)
-            .attr("stroke-width", "0.5px");
+            svg.append("line")
+                .attr("x1", 0)
+                .attr("x2", dx)
+                .attr("y1", height - margin.bottom + dy)
+                .attr("y2", height - dy)
+                .attr("stroke", black)
+                .attr("stroke-width", "0.5px");
 
-        svg.append("line")
-            .attr("x1", width)
-            .attr("x2", width - dx)
-            .attr("y1", height - margin.bottom + dy)
-            .attr("y2", height - dy)
-            .attr("stroke", black)
-            .attr("stroke-width", "0.5px");
-
-        // gYears.selectAll(".year-rect")
-        //     .data(d => [Object.fromEntries(
-        //         data.filter(datum => datum.year === d).map(datum => [datum.age, datum.value])
-        //     )])
-        //     .join("rect")
-        //         .attr("class", "year-rect")
-        //         .attr("fill", lightorange)
-        //         .style("opacity", 0.4)
-        //         .attr("x", -rectWidth/2)
-        //         .attr("y", d => yScale(d['15 to 19']))
-        //         .attr("width", rectWidth)
-        //         .attr("height", d => yScale(d['15 to 49']) - yScale(d['15 to 19']))
-        //         .on("mousemove", (evt, d) => {
-        //             const [x, y] = d3.pointer(evt, wrapper.node());
-        //             tooltip
-        //                 .style("display", "block")
-        //                 .style("top", `${y}px`)
-        //                 .style("left", `${x + 8}px`)
-        //                 .html(`
-        //                     <p class="country mb">Sexual violence (15-19)</p>
-        //                     <p>${(d['15 to 19']/d['15 to 49']).toFixed(1)} times more likely than among 15-49 year olds</p>
-        //                 `);
-
-        //             tooltipCircle
-        //                 .attr("cx", evt.offsetX)
-        //                 .attr("cy", evt.offsetY)
-        //                 .style("opacity", 1);
-                    
-        //         })
-        //         .on("mouseout", () => {
-        //             tooltip.style("display", "none");
-        //             tooltipCircle.style("opacity", 0);
-        //         })
-
-        // gYears.selectAll(".year-circle")
-        //     .data(d => data.filter(datum => datum.year === d))
-        //     .join("circle")
-        //         .attr("class", "year-circle")
-        //         .attr("fill", d => d.age === '15 to 19' ? orange : gray)
-        //         .attr("stroke", d => d.age === '15 to 19' ? orange : black)
-        //         .attr("stroke-width", "0.5px")
-        //         .attr("cx", 0)
-        //         .attr("cy", d => yScale(d.value))
-        //         .attr("r", rectWidth/2)
-
-        // gYears.selectAll(".year-text")
-        //     .data(d => data.filter(datum => datum.year === d))
-        //     .join("text")
-        //         .attr("class", "year-text")
-        //         .style("font-size", "14px")
-        //         .style("font-weight", 400)
-        //         .style("font-family", "Atkinson Hyperlegible")
-        //         .attr("x", rectWidth/2 + 6)
-        //         .attr("y", d => yScale(d.value) + 5)
-        //         .text(d => d.value);
-
-        // const tooltipCircle = svg.append("circle")
-        //     .attr("class", "tooltip-circle")
-        //     .attr("r", 4)
-        //     .style("stroke", "#000")
-        //     .style("fill", "#fff")
-        //     .style("opacity", 0);
+            svg.append("line")
+                .attr("x1", width)
+                .attr("x2", width - dx)
+                .attr("y1", height - margin.bottom + dy)
+                .attr("y2", height - dy)
+                .attr("stroke", black)
+                .attr("stroke-width", "0.5px");
+        }
+        
     })
 }
 

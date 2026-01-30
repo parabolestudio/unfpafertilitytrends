@@ -52,6 +52,7 @@ body {
 
 .legend-label {
     margin-right: 10px;
+    font-size: 14px;
 }
 
 #legend4 {
@@ -252,6 +253,11 @@ span.button:last-child {
     .callout::before {
         top: 44px;
         left: -20px;
+    }
+
+    .callout7::before {
+        top: -14px;
+        left: 28px;
     }
 
     .mobile-hidden {
