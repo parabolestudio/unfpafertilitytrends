@@ -9,7 +9,7 @@ function vis5() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = 534;
+    const width = isMobile ? window.innerWidth - 80 : 534;
     const height = 376;
     const margin = {
         left: 35,
@@ -25,8 +25,8 @@ function vis5() {
         .attr("viewbox", `0 0 ${width} ${height}`);
 
     d3.select("#bubble5")
-        .style("top", "230px")
-        .style("left", "460px");
+        .style("top", isMobile ? "380px" : "230px")
+        .style("left", isMobile ? `${window.innerWidth - 140}px` : "460px");
 
     Promise.all([
         d3.csv("./data/vis5.csv")
