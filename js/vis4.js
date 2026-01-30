@@ -89,12 +89,15 @@ function vis4() {
 
         function updateVis() {
 
+            const is24 = selectedYear === '2024';
+
             if (!isMobile) {
-                const is24 = selectedYear === '2024';
                 d3.select("#bubble4")
-                    .style("top", is24 ? "150px" : "400px")
+                    .style("top", is24 ? "180px" : "400px")
                     .style("left", is24 ? "560px" : "560px");
             }
+
+            d3.select("#note4").html(is24 ? "&#8203;" : "*Data is missing for 1986")
             
             const xTicks = selectedYear === '2024'
                 ? [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
@@ -164,7 +167,7 @@ function vis4() {
                     .style("font-weight", 400)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("x", xLevel)
-                    .text(d => `${d.level}`);
+                    .text(d => d.desired === 0 || d.observed === 0 ? `${d.level}*` : `${d.level}`);
 
             gLevel.selectAll(".level-rect")
                 .data(d => [d])

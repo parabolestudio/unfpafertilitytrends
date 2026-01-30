@@ -54,6 +54,10 @@ body {
     margin-right: 10px;
 }
 
+#legend4 {
+    margin-bottom: -18px;
+}
+
 #legend4 > * {
     line-height: 54px;
 }
@@ -84,13 +88,18 @@ body {
     background-color: var(--mid-orange);
 }
 
-.source {
+.source, 
+.note {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0%;
+}
+
+.source { 
     margin-top: 21px;
 }
+
 
 .callout {
     position: absolute;
@@ -144,7 +153,6 @@ body {
         display: none;
     }
 }
-
 
 .tooltip {
     position: absolute;
