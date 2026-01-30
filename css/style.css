@@ -56,10 +56,17 @@ body {
 
 #legend4 {
     margin-bottom: -18px;
+    display: flex;
+    gap: 24px;
+    align-items: start;
 }
 
 #legend4 > * {
-    line-height: 54px;
+    line-height: 14px;
+}
+
+#legend4 .legend-title {
+    margin-bottom: 16px;
 }
 
 #pregnancies {
@@ -136,24 +143,6 @@ body {
     height: 50px;
 }
 
-@media screen and (min-width: 750px) {
-    .callout-map::before {
-        top: 40px;
-        left: 120px;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .callout::before {
-        top: 44px;
-        left: -20px;
-    }
-
-    .mobile-hidden {
-        display: none;
-    }
-}
-
 .tooltip {
     position: absolute;
     border: 1px solid #000;
@@ -190,6 +179,7 @@ span.button {
     padding: 6px 12px;
     background-color: var(--gray);
     cursor: pointer;
+    font-size: 12px;
 }
 
 span.button.checked {
@@ -229,4 +219,26 @@ span.button:last-child {
 
 .uppercase {
     text-transform: uppercase;;
+}
+
+@media screen and (min-width: 750px) {
+    .callout-map::before {
+        top: 40px;
+        left: 120px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .callout::before {
+        top: 44px;
+        left: -20px;
+    }
+
+    .mobile-hidden {
+        display: none;
+    }
+
+    #legend4 {
+        gap: 12px;
+    }
 }
