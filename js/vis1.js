@@ -9,7 +9,7 @@ function vis1() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = 750;
+    const width = isMobile ? window.innerWidth : 750;
     const height = 300;
     const margin = {
         left: 90,
@@ -119,18 +119,20 @@ function vis1() {
                     tooltipCircle.style("opacity", 0);
                 })
 
-        gCountries.selectAll(".country-number")
-            .data(d => [d])
-            .join("text")
-                .attr("class", "country-name")
-                .style("font-size", "14px")
-                .style("font-weight", d => d.Country === "Peru" ? 700 : 400)
-                .style("fill", d => d.Country === "Peru" ? orange : gray)
-                .attr("text-anchor", "start")
-                .attr("x", d => xScale(d.Value) + 6)
-                .attr("y", yScale.bandwidth() - 5)
-                .text(d => d.Country === "Peru" ? `${d.Value}` : '')
-
+        if (!isMobile) {
+            gCountries.selectAll(".country-number")
+                .data(d => [d])
+                .join("text")
+                    .attr("class", "country-name")
+                    .style("font-size", "14px")
+                    .style("font-weight", d => d.Country === "Peru" ? 700 : 400)
+                    .style("fill", d => d.Country === "Peru" ? orange : gray)
+                    .attr("text-anchor", "start")
+                    .attr("x", d => xScale(d.Value) + 6)
+                    .attr("y", yScale.bandwidth() - 5)
+                    .text(d => d.Country === "Peru" ? `${d.Value}` : '')
+        }
+        
         const gAverages = svg.selectAll(".average")
             .data(lineData)
             .join("g")
@@ -146,9 +148,12 @@ function vis1() {
                 .attr("x1", 0)
                 .attr("x2", 0)
                 .attr("y1", yScale.range()[0] - 20)
-                .attr("y2", yScale.range()[1]);
+                .attr("y2", d =>
+                    isMobile && d.Country === 'Latin America and the Caribbean'
+                        ? yScale.range()[1] - 40
+                        : yScale.range()[1]);
 
-        gAverages.selectAll(".average-text")
+        const textAverages = gAverages.selectAll(".average-text")
             .data(d => [d])
             .join("text")
                 .attr("class", "average-text")
@@ -157,8 +162,21 @@ function vis1() {
                 .style("fill", black)
                 .attr("text-anchor", "start")
                 .attr("x", 6)
-                .attr("y", yScale.range()[1])
-                .text(d => d.Country);
+                .attr("y", d =>
+                    isMobile && d.Country === 'Latin America and the Caribbean'
+                        ? yScale.range()[1] - 54
+                        : yScale.range()[1]
+                )
+        
+        textAverages.selectAll("tspan")
+            .data(d =>
+                isMobile && d.Country === 'Latin America and the Caribbean'
+                    ? ['Latin America', 'and the Caribbean']
+                    : [d.Country])
+            .join("tspan")
+                .attr("x", 6)
+                .attr("dy", (_,i) => i === 0 ? 0 : "12px")
+                .text(d => d);
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")

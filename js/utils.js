@@ -8,3 +8,5 @@ const black = "#131619";
 const darkorange = "#AE4300";
 const lightorange = "#FDCFB3";
 const midorange = "#FB904D";
+
+const isMobile = window.innerWidth < 750;

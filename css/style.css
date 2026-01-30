@@ -15,12 +15,13 @@ body {
 .wrapper {
     width: 750px;
     position: relative;
+    max-width: 100%;
 }
 
 .title {
     font-weight: 800;
     font-size: 18px;
-    line-height: 100%;
+    line-height: 20px;
     letter-spacing: 0%;
     margin-bottom: 8px;
 }
@@ -28,7 +29,7 @@ body {
 .subtitle {
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
+    line-height: 16px;
     letter-spacing: 0%;
     margin-bottom: 20px;
 }
