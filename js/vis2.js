@@ -9,7 +9,7 @@ function vis2() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = 750;
+    const width = isMobile ? window.innerWidth : 750;
     const height = 566;
     const margin = {
         left: 90,
@@ -20,13 +20,13 @@ function vis2() {
 
 
     const colormap = ["#FFE8D9", "#FFD0B2", "#F96000", "#702B00"];
-    const stops = [0, 0.25, 0.5, 1];
+    const stops = [0, 0.33, 0.66, 1];
     const colorExtent = [0, 45];
     const xColorbar = 4;
     const yColorbar = height - 60;
     const heightColorbar = 20;
-    const widthColorbar = 175;
-    const xHighlighted = 600;
+    const widthColorbar = isMobile ? 100 : 175;
+    const xHighlighted = isMobile ? 260 : 600;
 
     const interpolator = d3.piecewise(colormap);
     // const interpolator = d3.interpolateRgbBasis(colormap);
@@ -38,8 +38,8 @@ function vis2() {
     const projection = d3
         .geoMercator()
         .center([-75, -9.25])
-        .scale(1620)
-        .translate([width / 2, height / 2]);
+        .scale(isMobile ? 1200 : 1620)
+        .translate([isMobile ? 150 : width / 2, height / 2]);
 
     const path = d3.geoPath().projection(projection);
 
@@ -52,8 +52,8 @@ function vis2() {
     const highlighted = ['Loreto', 'San Martín', 'Ucayali', 'Madre de Dios'];
 
     d3.select("#bubble2")
-        .style("top", "320px")
-        .style("left", "0");
+        .style("top", isMobile ? "60px" : "320px")
+        .style("left", isMobile ? "200px" : "0");
 
     Promise.all([
         d3.csv("./data/vis2.csv"),

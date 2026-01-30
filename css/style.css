@@ -119,10 +119,13 @@ body {
     height: 50px;
 }
 
-.callout-map::before {
-    top: 40px;
-    left: 120px;
+@media screen and (min-width: 750px) {
+    .callout-map::before {
+        top: 40px;
+        left: 120px;
+    }
 }
+
 
 .tooltip {
     position: absolute;
