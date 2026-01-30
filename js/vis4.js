@@ -10,6 +10,7 @@ function vis4() {
     const tooltip = d3.select(".tooltip");
 
     function formatType(type) {
+        if (isMobile) return [type];
         if (type === "Area of residence") {
             return ["Area of", "residence"];
         } else if (type === "Natural region") {
@@ -19,14 +20,14 @@ function vis4() {
         }
     }
 
-    const width = 750;
+    const width = isMobile ? window.innerWidth : 750;
     const height = 520;
     const xGroup = 0;
-    const xLevel = 120;
+    const xLevel = isMobile ? 0 : 120;
     const margin = {
         left: xLevel + 80,
         top: 0,
-        right: 60,
+        right: isMobile ? 20 : 60,
         bottom: 80
     }
 
@@ -35,10 +36,7 @@ function vis4() {
         .attr("height", height)
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
-
-    d3.select("#bubble4")
-        .style("top", "150px")
-        .style("left", "560px");
+    
 
     Promise.all([
         d3.csv("./data/vis4.csv")
@@ -90,6 +88,14 @@ function vis4() {
             .attr('class', "x-axis axis");
 
         function updateVis() {
+
+            if (!isMobile) {
+                const is24 = selectedYear === '2024';
+                d3.select("#bubble4")
+                    .style("top", is24 ? "150px" : "400px")
+                    .style("left", is24 ? "560px" : "560px");
+            }
+            
             const xTicks = selectedYear === '2024'
                 ? [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
                 // ? [0, 1, 2, 3, 4, 5, 6, 7]
@@ -127,12 +133,12 @@ function vis4() {
                 .data(d => [d])
                 .join("text")
                     .attr("class", "group-name")
-                    .style("font-size", "14px")
+                    .style("font-size", isMobile ? "12px" : "14px")
                     .style("font-weight", 400)
                     .style("font-family", "Atkinson Hyperlegible")
                     .style("opacity", 0.4)
                     .attr("x", 0)
-                    .attr("y", 0)
+                    .attr("y", isMobile ? - 20 : 0)
             
             gGroupText.selectAll("tspan")
                 .data(d => formatType(d))
@@ -154,7 +160,7 @@ function vis4() {
                 .join("text")
                     .attr("class", "level-name")
                     .attr("text-anchor", "start")
-                    .style("font-size", "14px")
+                    .style("font-size", isMobile ? "12px" : "14px")
                     .style("font-weight", 400)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("x", xLevel)
