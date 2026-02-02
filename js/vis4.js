@@ -36,6 +36,11 @@ function vis4() {
         .attr("height", height)
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
+
+    if (isMobile) {
+        d3.select("#img-legend")
+            .attr("src", "./assets/legend4-mobile.svg")
+    }
     
 
     Promise.all([

@@ -56,22 +56,23 @@ body {
 }
 
 #legend4 {
-    margin-bottom: -18px;
+    margin-bottom: -44px;
     display: flex;
-    gap: 24px;
+    gap: 6px;
     align-items: start;
 }
 
-#legend4 > * {
-    line-height: 14px;
+#legend4 .legend-item {
+    display: flex;
+    flex-direction: row;
 }
 
-#legend4 .legend-title {
-    margin-bottom: 16px;
+#legend4 > * {
+    line-height: 66px;
 }
 
 #pregnancies {
-    margin-right: -26px;
+    margin-right: 8px;
 } 
 
 .circle {
@@ -239,7 +240,7 @@ span.button:last-child {
 }
 
 .uppercase {
-    text-transform: uppercase;;
+    text-transform: uppercase;
 }
 
 @media screen and (min-width: 750px) {
@@ -265,6 +266,21 @@ span.button:last-child {
     }
 
     #legend4 {
-        gap: 12px;
+        flex-direction: row;
+        margin-bottom: -44px;
+    }
+
+    #legend4 .legend-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #legend4 .legend-title {
+        line-height: 14px;
+    }
+
+    #legend4 .buttons,
+    #img-legend  {
+        line-height: 47px;
     }
 }
