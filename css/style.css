@@ -68,12 +68,8 @@ body {
 }
 
 #legend4 > * {
-    line-height: 66px;
+    line-height: 70px;
 }
-
-#pregnancies {
-    margin-right: 8px;
-} 
 
 .circle {
     width: 12px;
@@ -108,7 +104,6 @@ body {
 .source { 
     margin-top: 21px;
 }
-
 
 .callout {
     position: absolute;
