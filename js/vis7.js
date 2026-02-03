@@ -1,7 +1,7 @@
 function vis7() {
     const title = "Adolescent motherhood costs the economy a fair share of GDP";
     const subtitle = "Opportunity cost associated with adolescent motherhood";
-    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC (2025)";
+    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025";
 
     d3.select("#title7").html(title);
     d3.select("#subtitle7").html(subtitle);
