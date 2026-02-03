@@ -56,7 +56,7 @@ body {
 }
 
 #legend4 {
-    margin-bottom: -44px;
+    margin-bottom: -20px;
     display: flex;
     gap: 6px;
     align-items: start;
@@ -262,7 +262,7 @@ span.button:last-child {
 
     #legend4 {
         flex-direction: row;
-        margin-bottom: -44px;
+        /* margin-bottom: -44px; */
     }
 
     #legend4 .legend-item {

@@ -28,7 +28,7 @@ function vis4() {
         left: xLevel + 80,
         top: 0,
         right: isMobile ? 20 : 60,
-        bottom: 80
+        bottom: 100
     }
 
     const svg = d3.select("#vis4")
@@ -82,7 +82,8 @@ function vis4() {
         const yGroup = d3.scaleBand()
             .domain(groups)
             .range([margin.top, height - margin.bottom])
-            .padding(0.5);
+            .paddingOuter(0.3)
+            .paddingInner(0.5);
 
         const yLevel = d3.scalePoint()
             .domain([0,1,2])
@@ -98,7 +99,7 @@ function vis4() {
 
             if (!isMobile) {
                 d3.select("#bubble4")
-                    .style("top", is24 ? "180px" : "400px")
+                    .style("top", is24 ? "160px" : "390px")
                     .style("left", is24 ? "560px" : "560px");
             }
 
@@ -280,7 +281,7 @@ function vis4() {
                     .attr("stroke-width", "1px")
                     .style("opacity", 0.4)
                     .attr("cx", 0)
-                    .attr("cy", height - margin.bottom)
+                    .attr("cy", height - margin.bottom + 20)
                     .attr("r", 2);
 
             gAvg.selectAll(".avg-text")
@@ -292,7 +293,7 @@ function vis4() {
                     .style("font-family", "Atkinson Hyperlegible")
                     .style("opacity", 0.4)
                     .attr("x", d => d.idx === 0 ? -xText : xText)
-                    .attr("y", height - margin.bottom + 4)
+                    .attr("y", height - margin.bottom + 24)
                     .attr("text-anchor", d => d.idx === 0 ? "end" : "start")
                     .text(d => d.idx === 0 ? d.desired : d.observed);
 
@@ -307,7 +308,7 @@ function vis4() {
                     .attr("x1", 0)
                     .attr("x2", 0)
                     .attr("y1", yGroup("Area of residence"))
-                    .attr("y2", height - margin.bottom)
+                    .attr("y2", height - margin.bottom + 20)
                     .attr("text-anchor", d => d.idx === 0 ? "end" : "start")
 
             svg.selectAll(".avg-label")
@@ -319,7 +320,7 @@ function vis4() {
                     .style("font-family", "Atkinson Hyperlegible")
                     .style("opacity", 0.4)
                     .attr("x", d => xScale(d))
-                    .attr("y", height - margin.bottom + 24)
+                    .attr("y", height - margin.bottom + 44)
                     .attr("text-anchor", "middle")
                     .text("National average")
         }
