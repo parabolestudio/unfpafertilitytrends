@@ -80,7 +80,7 @@ function vis5() {
             .join("text")
                 .attr("class", "xtick-label")
                 .attr("text-anchor", "middle")
-                .style("font-family", "Roboto")
+                .style("font-family", "Atkinson Hyperlegible")
                 .style("color", black)
                 .style("opacity", 1)
                 .attr("y", yScale(0) + margin.bottom)

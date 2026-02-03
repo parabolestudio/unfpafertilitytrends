@@ -8,7 +8,7 @@
 
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Atkinson Hyperlegible", sans-serif;
     color: var(--black);
 }
 
@@ -126,7 +126,7 @@ span.big-number {
 }
 
 .callout p {
-    font-family: Roboto;
+    font-family: "Atkinson Hyperlegible";
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
