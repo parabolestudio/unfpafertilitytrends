@@ -1,7 +1,7 @@
 function vis4() {
     const title = "Structural barriers drive high rates of unintended fertility in certain communities";
     const subtitle = "Average number of children women want versus the number they actually have (among women aged 15–49)";
-    const source = "Source: Elaboración propia, a partir de INEI. ENDES 1986 y 2024";
+    const source = "Source: Own elaboration, based on INEI - ENDES 1986 and 2024";
 
     d3.select("#title4").html(title);
     d3.select("#subtitle4").html(subtitle);
