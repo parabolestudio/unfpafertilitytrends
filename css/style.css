@@ -112,8 +112,8 @@ body {
 
 .callout7 {
     position: relative;
-    max-width: 100vw;
-    width: 390px;
+    width: 90vw;
+    min-width: 300px;
     margin: -60px auto 0 auto;
 }
 
@@ -156,8 +156,9 @@ span.big-number {
 }
 
 .callout7::before {
-    top: -14px;
-    left: 28px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .tooltip {
@@ -252,8 +253,8 @@ span.button:last-child {
     }
 
     .callout7::before {
-        top: -14px;
-        left: 28px;
+        top: 0;
+        left: -24px;
     }
 
     .mobile-hidden {

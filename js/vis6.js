@@ -7,7 +7,7 @@ function vis6() {
     d3.select("#subtitle6").html(subtitle);
     d3.select("#source6").html(source);
 
-    const width = isMobile ? window.innerWidth : svgWidth;
+    const width = isMobile ? 0.9 * window.innerWidth : svgWidth;
     const height = 245;
     const margin = {
         left: 90,
@@ -31,11 +31,11 @@ function vis6() {
         'Adolescents (≤19)': 84
     };
 
-    const circleRadius = isMobile ? 6.5 : 7.5;
+    const circleRadius = isMobile ? 6 : 7.5;
     const circlePadding = isMobile ? 2.5 : 4;
     const nCircles = 10;
     const pieWidth = nCircles * circleRadius * 2 + (nCircles - 1) * circlePadding;
-    const piePadding = 40;
+    const piePadding = isMobile ? 20 : 40;
     const pieShift = pieWidth + piePadding;
 
     const gPies = svg.selectAll(".pie")

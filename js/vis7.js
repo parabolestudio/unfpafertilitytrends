@@ -9,12 +9,12 @@ function vis7() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = isMobile ? window.innerWidth * 0.98 : svgWidth;
+    const width = isMobile ? window.innerWidth * 0.9 : svgWidth;
     const height = 260;
     const margin = {
         left: isMobile ? 5 : 20,
         top: 80,
-        right: 20,
+        right: isMobile ? 5 : 20,
         bottom: 80
     }
 
@@ -165,7 +165,7 @@ function vis7() {
         const getXTranslate = (d) => {
             if (isMobile) {
                 return d.type === 'Tax revenue loss'
-                        ? xScale(d.cumulative) + d.shift + 78 * xText
+                        ? xScale(d.cumulative) + d.shift + 72 * xText
                         : xScale(d.cumulative) + d.shift + 10 * xText
             } else {
                 return xScale(d.cumulative) + d.shift + 4 * xText

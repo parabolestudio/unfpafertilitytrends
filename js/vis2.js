@@ -9,7 +9,7 @@ function vis2() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = isMobile ? window.innerWidth : svgWidth;
+    const width = isMobile ? 0.9 * window.innerWidth : svgWidth;
     const height = 566;
     const margin = {
         left: 90,
@@ -26,7 +26,7 @@ function vis2() {
     const yColorbar = height - 60;
     const heightColorbar = 20;
     const widthColorbar = isMobile ? 100 : 175;
-    const xHighlighted = isMobile ? 260 : 600;
+    const xHighlighted = isMobile ? 220 : 600;
 
     const interpolator = d3.piecewise(colormap);
     // const interpolator = d3.interpolateRgbBasis(colormap);
@@ -38,8 +38,8 @@ function vis2() {
     const projection = d3
         .geoMercator()
         .center([-75, -9.25])
-        .scale(isMobile ? 1200 : 1620)
-        .translate([isMobile ? 150 : width / 2, height / 2]);
+        .scale(isMobile ? 1100 : 1620)
+        .translate([isMobile ? 120 : width / 2, height / 2]);
 
     const path = d3.geoPath().projection(projection);
 
