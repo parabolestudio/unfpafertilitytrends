@@ -1,7 +1,7 @@
 function vis5() {
     const title = "Adolescents face a significantly higher risk of sexual violence than adult women";
     const subtitle = "Share of women who experienced physical or sexual violence in the past 12 months";
-    const source = "Source: INEI. ENDES";
+    const source = "Source: INEI - ENDES";
 
     d3.select("#title5").html(title);
     d3.select("#subtitle5").html(subtitle);
