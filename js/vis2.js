@@ -1,7 +1,7 @@
 function vis2() {
     const title = "Where a girl lives strongly shapes early motherhood";
     const subtitle = "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2024";
-    const source = "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates 2024";
+    const source = "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024";
 
     d3.select("#title2").html(title);
     d3.select("#subtitle2").html(subtitle);
