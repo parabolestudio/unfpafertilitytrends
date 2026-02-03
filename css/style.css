@@ -158,7 +158,7 @@ span.big-number {
 .callout7::before {
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: -24px;
 }
 
 .tooltip {
