@@ -7,7 +7,7 @@ function vis6() {
     d3.select("#subtitle6").html(subtitle);
     d3.select("#source6").html(source);
 
-    const width = isMobile ? window.innerWidth : 750;
+    const width = isMobile ? window.innerWidth : svgWidth;
     const height = 245;
     const margin = {
         left: 90,

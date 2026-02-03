@@ -20,7 +20,7 @@ function vis4() {
         }
     }
 
-    const width = isMobile ? window.innerWidth : 750;
+    const width = isMobile ? window.innerWidth : svgWidth;
     const height = 520;
     const xGroup = 0;
     const xLevel = isMobile ? 0 : 120;

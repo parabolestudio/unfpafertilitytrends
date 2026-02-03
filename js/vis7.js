@@ -9,7 +9,7 @@ function vis7() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = isMobile ? window.innerWidth * 0.98 : 750;
+    const width = isMobile ? window.innerWidth * 0.98 : svgWidth;
     const height = 260;
     const margin = {
         left: isMobile ? 5 : 20,

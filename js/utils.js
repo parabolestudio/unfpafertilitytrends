@@ -9,4 +9,5 @@ const darkorange = "#AE4300";
 const lightorange = "#FDCFB3";
 const midorange = "#FB904D";
 
-const isMobile = window.innerWidth < 750;
+const svgWidth = 734;
+const isMobile = window.innerWidth < svgWidth;
