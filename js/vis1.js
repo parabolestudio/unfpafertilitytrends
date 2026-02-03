@@ -1,7 +1,7 @@
 function vis1() {
     const title = "High adolescent fertility persists in the region despite global trends";
     const subtitle = "Adolescent fertility rate per 1,000 women aged 15-19 years, South American countries, 2024";
-    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC (2025)";
+    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025";
 
     d3.select("#title1").html(title);
     d3.select("#subtitle1").html(subtitle);
