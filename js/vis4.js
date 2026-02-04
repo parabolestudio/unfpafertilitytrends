@@ -110,10 +110,6 @@ function vis4() {
                 .domain(xExtent)
                 .range([margin.left, width - margin.right]);
 
-            console.log(window.innerWidth)
-            const { x, y } = svg.node().getBoundingClientRect();
-            console.log(svg.node().getBoundingClientRect())
-
             d3.select("#bubble4")
                 .style("top", is24 ? `170px` : "400px")
                 .style("left", is24 ? `${xScale(3)}px` : `${xScale(5)}px`);
