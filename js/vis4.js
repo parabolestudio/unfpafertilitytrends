@@ -97,11 +97,6 @@ function vis4() {
 
             const is24 = selectedYear === '2024';
 
-            if (!isMobile) {
-                d3.select("#bubble4")
-                    .style("top", is24 ? "160px" : "390px")
-                    .style("left", is24 ? "560px" : "560px");
-            }
 
             d3.select("#note4").html(is24 ? "&#8203;" : "*Data is missing for 1986")
             
@@ -114,6 +109,18 @@ function vis4() {
             const xScale = d3.scaleLinear()
                 .domain(xExtent)
                 .range([margin.left, width - margin.right]);
+
+            console.log(window.innerWidth)
+            const { x, y } = svg.node().getBoundingClientRect();
+            console.log(svg.node().getBoundingClientRect())
+
+            d3.select("#bubble4")
+                .style("top", is24 ? `170px` : "400px")
+                .style("left", is24 ? `${xScale(3)}px` : `${xScale(5)}px`);
+
+            if (window.innerWidth < 470) {
+                d3.select("#bubble4").style("display", "none");
+            }
 
             xAxis.selectAll("line")
                 .data([0])
