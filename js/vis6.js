@@ -22,10 +22,6 @@ function vis6() {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
-    d3.select("#bubble6")
-        .style("top", isMobile ? "30px" : "50px")
-        .style("left", isMobile ? "34px" : "470px");
-
     const data = {
         'National estimate': 51,
         'Adolescents (≤19)': 84
@@ -37,6 +33,11 @@ function vis6() {
     const pieWidth = nCircles * circleRadius * 2 + (nCircles - 1) * circlePadding;
     const piePadding = isMobile ? 20 : 40;
     const pieShift = pieWidth + piePadding;
+    const totalWidth = 2 * pieShift + piePadding + 150;
+
+    d3.select("#bubble6")
+        .style("top", totalWidth > window.innerWidth ? "30px" : "50px")
+        .style("left", totalWidth > window.innerWidth ? "10px" : `${2 * pieShift + piePadding}px`);
 
     const gPies = svg.selectAll(".pie")
         .data(Object.keys(data))

@@ -257,10 +257,6 @@ span.button:last-child {
         left: -24px;
     }
 
-    .mobile-hidden {
-        display: none;
-    }
-
     #legend4 {
         flex-direction: row;
         /* margin-bottom: -44px; */
