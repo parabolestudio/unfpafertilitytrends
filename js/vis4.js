@@ -111,7 +111,7 @@ function vis4() {
                 .range([margin.left, width - margin.right]);
 
             d3.select("#bubble4")
-                .style("top", is24 ? `170px` : "400px")
+                .style("top", is24 ? `180px` : "410px")
                 .style("left", is24 ? `${xScale(3)}px` : `${xScale(5)}px`);
 
             if (window.innerWidth < 470) {
