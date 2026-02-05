@@ -110,8 +110,8 @@ function vis1(inEn) {
                         .html(`
                             <p class="country">${translate(d.Country, inEn)}</p>
                             <p class="value mb">${d.Value}</p>
-                            <p>${translate['LAC']}: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
-                            <p>${translate['World']}: ${lineData.find(ld => ld.Country === 'World').Value}</p>
+                            <p>${translate('LAC')}: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
+                            <p>${translate('World')}: ${lineData.find(ld => ld.Country === 'World').Value}</p>
                         `);
 
                     tooltipCircle

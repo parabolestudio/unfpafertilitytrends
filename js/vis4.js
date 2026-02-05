@@ -214,13 +214,14 @@ function vis4(inEn) {
                     .attr("height", rectHeight)
                     .on("mousemove", (evt, d) => {
                         const [x, y] = d3.pointer(evt, wrapper.node());
+                        const diff = ((d.observed-d.desired)/d.desired * 100).toFixed(1);
                         tooltip
                             .style("display", "block")
                             .style("top", `${y}px`)
                             .style("left", `${x + 8}px`)
                             .html(`
                                 <p class="country mb">${d.level}</p>
-                                <p>${((d.observed-d.desired)/d.desired * 100).toFixed(1)}% more pregnancies observed than desired</p>
+                                <p>${inEn ? diff : diff.replace(".", ",")}% ${translate("more pregnancies observed than desired", inEn)}</p>
                             `);
 
                         tooltipCircle

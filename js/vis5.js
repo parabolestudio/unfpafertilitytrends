@@ -146,13 +146,14 @@ function vis5(inEn) {
                 .attr("height", d => yScale(d['15 to 49']) - yScale(d['15 to 19']))
                 .on("mousemove", (evt, d) => {
                     const [x, y] = d3.pointer(evt, wrapper.node());
+                    const diff = (d['15 to 19']/d['15 to 49']).toFixed(1)
                     tooltip
                         .style("display", "block")
                         .style("top", `${y}px`)
                         .style("left", `${x + 8}px`)
                         .html(`
-                            <p class="country mb">Sexual violence (15-19)</p>
-                            <p>${(d['15 to 19']/d['15 to 49']).toFixed(1)} times more likely than among 15-49 year olds</p>
+                            <p class="country mb">${translate("Sexual violence", inEn)} (15-19)</p>
+                            <p>${inEn ? diff : diff.replace(".", ",")} ${translate("times more likely than among 15-49 year olds", inEn)}</p>
                         `);
 
                     tooltipCircle

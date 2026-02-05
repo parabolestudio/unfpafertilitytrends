@@ -13,7 +13,7 @@ const svgWidth = 734;
 const isMobile = window.innerWidth < svgWidth;
 
 const dictionary = {
-    'World': "Mundo",
+    'World': "Mundial",
     'Latin America and the Caribbean': "América Latina y el Caribe",
     'Latin America': "América Latina",
     'and the Caribbean': "y el Caribe",
@@ -46,8 +46,10 @@ const dictionary = {
     "Area of": 'Área de',
     "residence": 'residencia',
     "Natural": 'Región',
-    "region": "natural"
-
+    "region": "natural",
+    "more pregnancies observed than desired": "más embarazos observados que deseados",
+    "times more likely than among 15-49 year olds": "veces más probable que entre 15 a 49 años",
+    "Sexual violence": "Violencia sexual"
 };
 
 const translate = (word, inEn) => inEn ? word : (Object.keys(dictionary).includes(word) ? dictionary[word] : word);
