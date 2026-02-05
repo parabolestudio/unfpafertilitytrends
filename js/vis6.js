@@ -8,10 +8,18 @@ function vis6(inEn) {
     const source = inEn
         ? "Source: Maternal Mortality Inter-Agency Group (MMEIG); Ministry of Health - Online Live Birth Certificate Registration System; Ministry of Health - Maternal Mortality and Severe Maternal Morbidity Situation Room"
         : "Fuente: Grupo Interinstitucional sobre Mortalidad Materna (MMEIG); Ministerio de Salud - Sistema de registro en línea de certificados de nacimiento vivo; Ministerio de Salud - Sala de situación sobre mortalidad materna y morbilidad materna grave";
+    const calloutTitle = inEn
+        ? "The risk"
+        : "El riesgo";
+    const calloutParagraph = inEn
+        ? "Young girls face many more life-threatening complications when they get pregnant"
+        : "Las niñas enfrentan muchas más complicaciones potencialmente mortales cuando quedan embarazadas";
 
     d3.select("#title6").html(title);
     d3.select("#subtitle6").html(subtitle);
     d3.select("#source6").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
 
     const width = isMobile ? 0.9 * window.innerWidth : svgWidth;
     const height = 245;
@@ -28,10 +36,15 @@ function vis6(inEn) {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
-    const data = {
-        'National estimate': 51,
-        'Adolescents (≤19)': 84
-    };
+    const data = inEn
+        ? {
+            'National estimate': 51,
+            'Adolescents (≤19)': 84
+        }
+        : {
+            'Estimación nacional': 51,
+            'Adolescentes (≤19)': 84
+        };
 
     const circleRadius = isMobile ? 6 : 7.5;
     const circlePadding = isMobile ? 2.5 : 4;

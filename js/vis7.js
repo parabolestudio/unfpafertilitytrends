@@ -8,10 +8,31 @@ function vis7(inEn) {
     const source = inEn
         ? "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025"
         : "Fuente: UNFPA - Consecuencias socioeconómicas del embarazo adolescente en América Latina y el Caribe, 2025";
+    const bigNumber = inEn
+        ? "0.14%"
+        : "0,14%";
+    const calloutParagraph = inEn
+        ? " of GDP of Peru"
+        : " del PBI del Perú";
+    const legendTitle = inEn
+        ? "Cost type"
+        : "Tipo de coste";
+    const legendItem1 = inEn
+        ? "Coste de oportunidad para las mujeres"
+        : "15 a 49";
+    const legendItem2 = inEn
+        ? "Coste para el Estado"
+        : "15 a 19";
 
     d3.select("#title7").html(title);
     d3.select("#subtitle7").html(subtitle);
     d3.select("#source7").html(source);
+    d3.select(".big-number").html(bigNumber);
+    d3.select(".rest-callout").html(calloutParagraph);
+    d3.select("#legend-title").html(legendTitle);
+    d3.select("#legend-item-1").html(legendItem1);
+    d3.select("#legend-item-2").html(legendItem2);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 

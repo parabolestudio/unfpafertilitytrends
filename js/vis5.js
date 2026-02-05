@@ -8,10 +8,31 @@ function vis5(inEn) {
     const source = inEn
         ? "Source: INEI - ENDES"
         : "Fuente: INEI - ENDES";
+    const calloutTitle = inEn
+        ? "The gap"
+        : "La brecha";
+    const calloutParagraph = inEn
+        ? "Violence against adolescents is nearly twice as high as the overall rate"
+        : "La violencia contra las adolescentes es casi el doble que la tasa general";
+    const legendTitle = inEn
+        ? "Age group"
+        : "Grupo de edad";
+    const legendItem1 = inEn
+        ? "15 to 49"
+        : "15 a 49";
+    const legendItem2 = inEn
+        ? "15 to 19"
+        : "15 a 19";
 
     d3.select("#title5").html(title);
     d3.select("#subtitle5").html(subtitle);
     d3.select("#source5").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
+    d3.select("#legend-title").html(legendTitle);
+    d3.select("#legend-item-1").html(legendItem1);
+    d3.select("#legend-item-2").html(legendItem2);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 

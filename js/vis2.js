@@ -8,10 +8,23 @@ function vis2(inEn) {
     const source = inEn
         ? "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024"
         : "Fuente: Sistema de Registro Civil en Línea (CNV), Ministerio de Salud; estimaciones de población, 2024";
+    const calloutTitle = inEn
+        ? "The proof"
+        : "La prueba";
+    const calloutParagraph = inEn
+        ? "Targeted interventions have reduced rates in key regions, demonstrating that this trend is reversible with multisectoral action"
+        : "Las intervenciones focalizadas han logrado reducir las tasas en regiones clave, demostrando que esta tendencia es reversible con acción multisectorial";
+    const legend = inEn
+        ? "Number of live births" 
+        : "Nacimientos por cada 1.000 habitantes";
+
 
     d3.select("#title2").html(title);
     d3.select("#subtitle2").html(subtitle);
     d3.select("#source2").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
@@ -110,7 +123,7 @@ function vis2(inEn) {
                         .style("left", `${x + 8}px`)
                         .html(`
                             <p class="country mb">${d.properties.departamento}</p>
-                            <p>Number of live births</p>
+                            <p>${legend}</p>
                             <p class="bold">${d.properties.value}</p>
                         `);
 

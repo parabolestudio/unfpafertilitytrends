@@ -8,10 +8,19 @@ function vis4(inEn) {
     const source = inEn
         ? "Source: Own elaboration, based on INEI - ENDES 1986 and 2024"
         : "Fuente: Elaboración propia, basada en INEI - ENDES 1986 y 2024";
+    const calloutTitle = inEn
+        ? "The inequality"
+        : "La desigualdad";
+    const calloutParagraph = inEn
+        ? "Certain sociodemographic characteristics–like living in a rural, low income community–constrain women’s ability to exercise their reproductive rights"
+        : "Ciertas características sociodemográficas —como vivir en una comunidad rural y de bajos ingresos— limitan la capacidad de las mujeres para ejercer sus derechos reproductivos";
 
     d3.select("#title4").html(title);
     d3.select("#subtitle4").html(subtitle);
     d3.select("#source4").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
