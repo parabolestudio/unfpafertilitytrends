@@ -19,7 +19,9 @@ const dictionary = {
     'and the Caribbean': "y el Caribe",
     "LAC": "ALC",
     "Peru": "Perú",
-    "Brazil": "Brasil"
+    "Brazil": "Brasil",
+    "Births per 1,000": "Nacimientos por cada 1.000 habitantes"
 };
 
 const translate = (word, inEn) => inEn ? word : (Object.keys(dictionary).includes(word) ? dictionary[word] : word);
+const formatNumber = (number, inEn) => inEn ? `${number}` : `${number}`.replace(".", ",");

@@ -155,7 +155,7 @@ function vis2(inEn) {
             .attr("text-anchor", 'begin')
             .style("font-weight", 700)
             .style("font-size", '14px')
-            .text("Births per 1,000")
+            .text(translate("Births per 1,000", inEn))
 
         gBar.append("rect")
             .attr("x", xColorbar)
@@ -224,7 +224,7 @@ function vis2(inEn) {
                 .attr("text-anchor", 'begin')
                 .style("font-weight", 400)
                 .style("font-size", '14px')
-                .text(d => d.value);
+                .text(d => formatNumber(d.value, inEn));
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")
