@@ -16,7 +16,7 @@ function vis4(inEn) {
         : "Ciertas características sociodemográficas —como vivir en una comunidad rural y de bajos ingresos— limitan la capacidad de las mujeres para ejercer sus derechos reproductivos";
     const legendTitle = inEn
         ? "Select year"
-        : "Grupo de edad";
+        : "Seleccionar año";
     const legendItem1 = inEn
         ? "Pregnancies"
         : "Fecundidad";

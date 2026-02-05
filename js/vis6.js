@@ -50,7 +50,7 @@ function vis6(inEn) {
     const totalWidth = 2 * pieShift + piePadding + 150;
 
     d3.select("#bubble6")
-        .style("top", totalWidth > window.innerWidth ? "30px" : "50px")
+        .style("top", totalWidth > window.innerWidth ? (inEn ? "30px" : "54px") : "50px")
         .style("left", totalWidth > window.innerWidth ? "10px" : `${2 * pieShift + piePadding}px`);
 
     const gPies = svg.selectAll(".pie")
