@@ -246,17 +246,7 @@ span.button:last-child {
     }
 }
 
-@media screen and (max-width: 750px) {
-    .callout::before {
-        top: 44px;
-        left: -20px;
-    }
-
-    .callout7::before {
-        top: 0;
-        left: -24px;
-    }
-
+@media screen and (max-width: 550px) {
     #legend4 {
         flex-direction: row;
         /* margin-bottom: -44px; */
@@ -274,5 +264,17 @@ span.button:last-child {
     #legend4 .buttons,
     #img-legend  {
         line-height: 47px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .callout::before {
+        top: 44px;
+        left: -20px;
+    }
+
+    .callout7::before {
+        top: 0;
+        left: -24px;
     }
 }

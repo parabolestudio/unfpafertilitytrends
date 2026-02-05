@@ -9,8 +9,10 @@ function vis4() {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
+    const smallScreen = window.innerWidth < 550;
+
     function formatType(type) {
-        if (isMobile) return [type];
+        if (smallScreen) return [type];
         if (type === "Area of residence") {
             return ["Area of", "residence"];
         } else if (type === "Natural region") {
@@ -20,14 +22,14 @@ function vis4() {
         }
     }
 
-    const width = isMobile ? 0.9 * window.innerWidth : svgWidth;
+    const width = smallScreen ? 0.9 * window.innerWidth : svgWidth;
     const height = 520;
     const xGroup = 0;
-    const xLevel = isMobile ? 0 : 120;
+    const xLevel = smallScreen ? 0 : 120;
     const margin = {
         left: xLevel + 80,
         top: 0,
-        right: isMobile ? 20 : 60,
+        right: smallScreen ? 20 : 60,
         bottom: 100
     }
 
@@ -37,7 +39,7 @@ function vis4() {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
-    if (isMobile) {
+    if (smallScreen) {
         d3.select("#img-legend")
             .attr("src", "./assets/legend4-mobile.svg")
     }
@@ -145,12 +147,12 @@ function vis4() {
                 .data(d => [d])
                 .join("text")
                     .attr("class", "group-name")
-                    .style("font-size", isMobile ? "12px" : "14px")
+                    .style("font-size", smallScreen ? "12px" : "14px")
                     .style("font-weight", 400)
                     .style("font-family", "Atkinson Hyperlegible")
                     .style("opacity", 0.4)
                     .attr("x", 0)
-                    .attr("y", isMobile ? - 20 : 0)
+                    .attr("y", smallScreen ? - 20 : 0)
             
             gGroupText.selectAll("tspan")
                 .data(d => formatType(d))
@@ -172,7 +174,7 @@ function vis4() {
                 .join("text")
                     .attr("class", "level-name")
                     .attr("text-anchor", "start")
-                    .style("font-size", isMobile ? "12px" : "14px")
+                    .style("font-size", smallScreen ? "12px" : "14px")
                     .style("font-weight", 400)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("x", xLevel)
