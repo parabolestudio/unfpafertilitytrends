@@ -1,4 +1,4 @@
-function vis2(isEn) {
+function vis2(inEn) {
     const title = inEn
         ? "Where a girl lives strongly shapes early motherhood"
         : "El lugar donde vive una niña determina fuertemente la maternidad temprana";
