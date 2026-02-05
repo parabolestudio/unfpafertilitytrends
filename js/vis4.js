@@ -64,7 +64,10 @@ function vis4(inEn) {
 
     if (smallScreen) {
         d3.select("#img-legend")
-            .attr("src", "./assets/legend4-mobile.svg")
+            .attr("src", `./assets/legend4-mobile${inEn ? '' : '-es'}.svg`)
+    } else {
+        d3.select("#img-legend")
+            .attr("src", `./assets/legend4${inEn ? '' : '-es'}.svg`)
     }
     
 
