@@ -255,7 +255,7 @@ function vis4(inEn) {
                     .attr("x", d => xScale(d.desired) - xText)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("text-anchor", "end")
-                    .text(d => d.desired === 0 ? '' : formatNumber(d.desired));
+                    .text(d => d.desired === 0 ? '' : formatNumber(d.desired, inEn));
 
             gLevel.selectAll(".level-observed")
                 .data(d => [d])
@@ -278,7 +278,7 @@ function vis4(inEn) {
                     .attr("x", d => xScale(d.observed) + xText)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("text-anchor", "start")
-                    .text(d => d.observed === 0 ? '' : formatNumber(d.observed));
+                    .text(d => d.observed === 0 ? '' : formatNumber(d.observed, inEn));
 
             const averageData = data.find(d => d.group === 'Average' && d.year === selectedYear);
             const avgAvg = (averageData.desired + averageData.observed)/2;
