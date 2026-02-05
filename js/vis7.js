@@ -1,7 +1,7 @@
 function vis7(inEn) {
     const title = inEn
         ? "Adolescent motherhood costs the economy a fair share of GDP"
-        : "La maternidad adolescente le cuesta a la economía una parte considerable del PBI ";
+        : "La maternidad adolescente le cuesta a la economía una parte considerable del PIB";
     const subtitle = inEn
         ? "Opportunity cost associated with adolescent motherhood"
         : "Costo de oportunidad asociado con la maternidad adolescente";
@@ -13,7 +13,7 @@ function vis7(inEn) {
         : "0,14%";
     const calloutParagraph = inEn
         ? " of GDP of Peru"
-        : " del PBI del Perú";
+        : " del PIB del Perú";
     const legendTitle = inEn
         ? "Cost type"
         : "Tipo de coste";
