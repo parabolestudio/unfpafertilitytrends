@@ -1,7 +1,13 @@
-function vis7() {
-    const title = "Adolescent motherhood costs the economy a fair share of GDP";
-    const subtitle = "Opportunity cost associated with adolescent motherhood";
-    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025";
+function vis7(inEn) {
+    const title = inEn
+        ? "Adolescent motherhood costs the economy a fair share of GDP"
+        : "La maternidad adolescente le cuesta a la economía una parte considerable del PBI ";
+    const subtitle = inEn
+        ? "Opportunity cost associated with adolescent motherhood"
+        : "Costo de oportunidad asociado con la maternidad adolescente";
+    const source = inEn
+        ? "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025"
+        : "Fuente: UNFPA - Consecuencias socioeconómicas del embarazo adolescente en América Latina y el Caribe, 2025";
 
     d3.select("#title7").html(title);
     d3.select("#subtitle7").html(subtitle);
@@ -236,4 +242,4 @@ function vis7() {
     })
 }
 
-vis7();
+vis7(true);

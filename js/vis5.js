@@ -1,7 +1,13 @@
-function vis5() {
-    const title = "Adolescents face a significantly higher risk of sexual violence than adult women";
-    const subtitle = "Share of women who experienced physical or sexual violence in the past 12 months";
-    const source = "Source: INEI - ENDES";
+function vis5(inEn) {
+    const title = inEn
+        ? "Adolescents face a significantly higher risk of sexual violence than adult women"
+        : "Las adolescentes enfrentan un riesgo de violencia sexual significativamente mayor que las mujeres adultas";
+    const subtitle = inEn
+        ? "Share of women who experienced physical or sexual violence in the past 12 months"
+        : "Porcentaje de mujeres que experimentaron violencia física o sexual en los últimos 12 meses";
+    const source = inEn
+        ? "Source: INEI - ENDES"
+        : "Fuente: INEI - ENDES";
 
     d3.select("#title5").html(title);
     d3.select("#subtitle5").html(subtitle);
@@ -170,4 +176,4 @@ function vis5() {
     })
 }
 
-vis5();
+vis5(true);

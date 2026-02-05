@@ -1,7 +1,13 @@
-function vis6() {
-    const title = "Adolescents face a disproportionate risk of death due to pregnancy";
-    const subtitle = "Maternal mortality rate per 100,000 live births, 2024";
-    const source = "Source: Maternal Mortality Inter-Agency Group (MMEIG); Ministry of Health - Online Live Birth Certificate Registration System; Ministry of Health - Maternal Mortality and Severe Maternal Morbidity Situation Room";
+function vis6(inEn) {
+    const title = inEn
+        ? "Adolescents face a disproportionate risk of death due to pregnancy"
+        : "Las adolescentes enfrentan un riesgo desproporcionado de muerte debido al embarazo";
+    const subtitle = inEn
+        ? "Maternal mortality rate per 100,000 live births, 2024"
+        : "Razón de mortalidad materna por cada 100.000 nacidos vivos, 2024";
+    const source = inEn
+        ? "Source: Maternal Mortality Inter-Agency Group (MMEIG); Ministry of Health - Online Live Birth Certificate Registration System; Ministry of Health - Maternal Mortality and Severe Maternal Morbidity Situation Room"
+        : "Fuente: Grupo Interinstitucional sobre Mortalidad Materna (MMEIG); Ministerio de Salud - Sistema de registro en línea de certificados de nacimiento vivo; Ministerio de Salud - Sala de situación sobre mortalidad materna y morbilidad materna grave";
 
     d3.select("#title6").html(title);
     d3.select("#subtitle6").html(subtitle);
@@ -92,4 +98,4 @@ function vis6() {
     
 }
 
-vis6();
+vis6(true);

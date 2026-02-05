@@ -1,7 +1,13 @@
-function vis2() {
-    const title = "Where a girl lives strongly shapes early motherhood";
-    const subtitle = "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2024";
-    const source = "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024";
+function vis2(isEn) {
+    const title = inEn
+        ? "Where a girl lives strongly shapes early motherhood"
+        : "El lugar donde vive una niña determina fuertemente la maternidad temprana";
+    const subtitle = inEn
+        ? "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2024"
+        : "Número de nacidos vivos por cada 1.000 niñas y adolescentes de 10 a 19 años por región, 2024";
+    const source = inEn
+        ? "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024"
+        : "Fuente: Sistema de Registro Civil en Línea (CNV), Ministerio de Salud; estimaciones de población, 2024";
 
     d3.select("#title2").html(title);
     d3.select("#subtitle2").html(subtitle);
@@ -217,4 +223,4 @@ function vis2() {
     })
 }
 
-vis2();
+vis2(true);

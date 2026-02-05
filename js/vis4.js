@@ -1,7 +1,13 @@
-function vis4() {
-    const title = "Structural barriers drive high rates of unintended fertility in certain communities";
-    const subtitle = "Average number of children women want versus the number they actually have (among women aged 15–49)";
-    const source = "Source: Own elaboration, based on INEI - ENDES 1986 and 2024";
+function vis4(inEn) {
+    const title = inEn
+        ? "Structural barriers drive high rates of unintended fertility in certain communities"
+        : "Las barreras estructurales impulsan altas tasas de fecundidad no intencional en ciertas comunidades";
+    const subtitle = inEn
+        ? "Average number of children women want versus the number they actually have (among women aged 15–49)"
+        : "Promedio de hijos que las mujeres desean versus el número que realmente tienen (mujeres de 15-49 años)";
+    const source = inEn
+        ? "Source: Own elaboration, based on INEI - ENDES 1986 and 2024"
+        : "Fuente: Elaboración propia, basada en INEI - ENDES 1986 y 2024";
 
     d3.select("#title4").html(title);
     d3.select("#subtitle4").html(subtitle);
@@ -341,4 +347,4 @@ function vis4() {
     })
 }
 
-vis4();
+vis4(true);
