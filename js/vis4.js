@@ -14,12 +14,20 @@ function vis4(inEn) {
     const calloutParagraph = inEn
         ? "Certain sociodemographic characteristics–like living in a rural, low income community–constrain women’s ability to exercise their reproductive rights"
         : "Ciertas características sociodemográficas —como vivir en una comunidad rural y de bajos ingresos— limitan la capacidad de las mujeres para ejercer sus derechos reproductivos";
+    const legendTitle = inEn
+        ? "Select year"
+        : "Grupo de edad";
+    const legendItem1 = inEn
+        ? "Pregnancies"
+        : "Fecundidad";
 
     d3.select("#title4").html(title);
     d3.select("#subtitle4").html(subtitle);
     d3.select("#source4").html(source);
     d3.select(".callout-title").html(calloutTitle);
     d3.select(".callout-p").html(calloutParagraph);
+    d3.select("#legend-title").html(legendTitle);
+    d3.select("#pregnancies").html(legendItem1);
 
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
@@ -150,7 +158,7 @@ function vis4(inEn) {
                     .attr("text-anchor", "middle")
                     .attr("y", height - 20 + 14)
                     .attr("x", d => xScale(d))
-                    .text(d => `${d}`);
+                    .text(d => formatNumber(d, inEn));
                     
             const gGroups = svg.selectAll(".group")
                 .data(groups)
@@ -174,7 +182,7 @@ function vis4(inEn) {
                 .join("tspan")
                     .attr("x", 0)
                     .attr("dy", (_, i) => i === 0 ? '10px': `16px`)
-                    .text(d => d);
+                    .text(d => translate(d, inEn));
 
             const gLevel = gGroups.selectAll(".g-level")
                 .data(d => data.filter(datum => datum.group === d && datum.year === selectedYear).map((lvl,i) => ({
@@ -193,7 +201,7 @@ function vis4(inEn) {
                     .style("font-weight", 400)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("x", xLevel)
-                    .text(d => d.desired === 0 || d.observed === 0 ? `${d.level}*` : `${d.level}`);
+                    .text(d => d.desired === 0 || d.observed === 0 ? `${translate(d.level, inEn)}*` : `${translate(d.level, inEn)}`);
 
             gLevel.selectAll(".level-rect")
                 .data(d => [d])
@@ -247,7 +255,7 @@ function vis4(inEn) {
                     .attr("x", d => xScale(d.desired) - xText)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("text-anchor", "end")
-                    .text(d => d.desired === 0 ? '' : d.desired);
+                    .text(d => d.desired === 0 ? '' : formatNumber(d.desired));
 
             gLevel.selectAll(".level-observed")
                 .data(d => [d])
@@ -270,7 +278,7 @@ function vis4(inEn) {
                     .attr("x", d => xScale(d.observed) + xText)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("text-anchor", "start")
-                    .text(d => d.observed === 0 ? '' : d.observed);
+                    .text(d => d.observed === 0 ? '' : formatNumber(d.observed));
 
             const averageData = data.find(d => d.group === 'Average' && d.year === selectedYear);
             const avgAvg = (averageData.desired + averageData.observed)/2;
@@ -342,7 +350,7 @@ function vis4(inEn) {
                     .attr("x", d => xScale(d))
                     .attr("y", height - margin.bottom + 44)
                     .attr("text-anchor", "middle")
-                    .text("National average")
+                    .text(translate("National average", inEn))
         }
         
         updateVis();

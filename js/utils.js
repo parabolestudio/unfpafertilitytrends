@@ -25,9 +25,29 @@ const dictionary = {
     'Adolescents (≤19)': 'Adolescentes (≤19)',
     "Education": "Educación",
     "Employment and inactivity": "Empleo e inactividad",
-    "Income": "Ingresos laborales",
+    "Income": "Ingresos",
     "Healthcare": "Asistencia sanitaria",
-    "Tax revenue loss": "Pérdida de ingresos fiscales"
+    "Tax revenue loss": "Pérdida de ingresos fiscales",
+    "Urban": "Urbana",
+    "Metropolitan Lima": "Lima Metropolitana",
+    "Amazon": "Selva",
+    "Highlands": "Sierra",
+    "Coast": "Costa",
+    "No education": "Sin educación",
+    "Primary or less": "Primaria",
+    "Higher": "Superior",
+    "Lowest quintile": "Quintil inferior",
+    "Intermediate quintile": "Quintil intermedio",
+    "Highest quintile": "Quintil superior",
+    "National": "Nacional",
+    "National average": "Promedio nacional",
+    "Area of residence": 'Área de residencia',
+    "Natural region": "Región natural",
+    "Area of": 'Área de',
+    "residence": 'residencia',
+    "Natural": 'Región',
+    "region": "natural"
+
 };
 
 const translate = (word, inEn) => inEn ? word : (Object.keys(dictionary).includes(word) ? dictionary[word] : word);
