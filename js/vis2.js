@@ -235,5 +235,3 @@ function vis2(inEn) {
 
     })
 }
-
-vis2(true);

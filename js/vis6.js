@@ -110,5 +110,3 @@ function vis6(inEn) {
 
     
 }
-
-vis6(true);

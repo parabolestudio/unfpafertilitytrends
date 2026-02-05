@@ -18,11 +18,11 @@ function vis7(inEn) {
         ? "Cost type"
         : "Tipo de coste";
     const legendItem1 = inEn
-        ? "Coste de oportunidad para las mujeres"
-        : "15 a 49";
+        ? "Opportunity cost to women"
+        : "Coste de oportunidad para las mujeres";
     const legendItem2 = inEn
-        ? "Coste para el Estado"
-        : "15 a 19";
+        ? "Cost to the State"
+        : "Coste para el Estado";
 
     d3.select("#title7").html(title);
     d3.select("#subtitle7").html(subtitle);
@@ -262,5 +262,3 @@ function vis7(inEn) {
         
     })
 }
-
-vis7(true);

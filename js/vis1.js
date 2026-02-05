@@ -90,7 +90,7 @@ function vis1(inEn) {
                 .attr("text-anchor", "start")
                 .attr("x", 0)
                 .attr("y", yScale.bandwidth() - 5)
-                .text(d => d.Country)
+                .text(d => translate(d.Country, inEn))
 
         gCountries.selectAll(".country-bar")
             .data(d => [d])
@@ -108,10 +108,10 @@ function vis1(inEn) {
                         .style("top", `${y}px`)
                         .style("left", `${x + 8}px`)
                         .html(`
-                            <p class="country">${d.Country}</p>
+                            <p class="country">${translate(d.Country, inEn)}</p>
                             <p class="value mb">${d.Value}</p>
-                            <p>LAC: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
-                            <p>World: ${lineData.find(ld => ld.Country === 'World').Value}</p>
+                            <p>${translate['LAC']}: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
+                            <p>${translate['World']}: ${lineData.find(ld => ld.Country === 'World').Value}</p>
                         `);
 
                     tooltipCircle
@@ -182,7 +182,7 @@ function vis1(inEn) {
             .join("tspan")
                 .attr("x", 6)
                 .attr("dy", (_,i) => i === 0 ? 0 : "12px")
-                .text(d => d);
+                .text(d => translate(d, inEn));
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")
@@ -192,5 +192,3 @@ function vis1(inEn) {
             .style("opacity", 0);
     })
 }
-
-vis1(true);

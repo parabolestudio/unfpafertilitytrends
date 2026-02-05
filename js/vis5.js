@@ -196,5 +196,3 @@ function vis5(inEn) {
             .style("opacity", 0);
     })
 }
-
-vis5(true);
