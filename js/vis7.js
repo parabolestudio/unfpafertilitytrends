@@ -1,11 +1,38 @@
-function vis7() {
-    const title = "Adolescent motherhood costs the economy a fair share of GDP";
-    const subtitle = "Opportunity cost associated with adolescent motherhood";
-    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025";
+function vis7(inEn) {
+    const title = inEn
+        ? "Adolescent motherhood costs the economy a fair share of GDP"
+        : "La maternidad adolescente le cuesta a la economía una parte considerable del PIB";
+    const subtitle = inEn
+        ? "Opportunity cost associated with adolescent motherhood"
+        : "Costo de oportunidad asociado con la maternidad adolescente";
+    const source = inEn
+        ? "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025"
+        : "Fuente: UNFPA - Consecuencias socioeconómicas del embarazo adolescente en América Latina y el Caribe, 2025";
+    const bigNumber = inEn
+        ? "0.14%"
+        : "0,14%";
+    const calloutParagraph = inEn
+        ? " of GDP of Peru"
+        : " del PIB del Perú";
+    const legendTitle = inEn
+        ? "Cost type"
+        : "Tipo de coste";
+    const legendItem1 = inEn
+        ? "Opportunity cost to women"
+        : "Coste de oportunidad para las mujeres";
+    const legendItem2 = inEn
+        ? "Cost to the State"
+        : "Coste para el Estado";
 
     d3.select("#title7").html(title);
     d3.select("#subtitle7").html(subtitle);
     d3.select("#source7").html(source);
+    d3.select(".big-number").html(bigNumber);
+    d3.select(".rest-callout").html(calloutParagraph);
+    d3.select("#legend-title").html(legendTitle);
+    d3.select("#legend-item-1").html(legendItem1);
+    d3.select("#legend-item-2").html(legendItem2);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
@@ -57,7 +84,7 @@ function vis7() {
                     type: d.Type,
                     who: d.Who,
                     shift: i * strokeWidth,
-                    words: formatType(d.Type)
+                    words: formatType(translate(d.Type, inEn))
                 }
             })
             return _data
@@ -68,6 +95,14 @@ function vis7() {
                 return ["Employment", "and inactivity"];
             } else if (type === "Tax revenue loss") {
                 return ["Tax", "revenue", "loss"];
+            } else if (type === "Empleo e inactividad") {
+                return ["Empleo e", "inactividad"]
+            } else if (type === "Ingresos laborales") {
+                return ["Ingresos", "laborales"]
+            } else if (type === "Asistencia sanitaria") {
+                return ["Asistencia", "sanitaria"]
+            } else if (type === "Pérdida de ingresos fiscales") {
+                return ["Pérdida de", "ingresos", "fiscales"]
             } else {
                 return [type];
             }
@@ -111,7 +146,7 @@ function vis7() {
                         : xScale(d.cumulative) + d.shift + 12 * xText + shift
             } else {
                 return d.type === 'Healthcare'
-                        ? xScale(d.cumulative) + d.shift + 6 * xText
+                        ? xScale(d.cumulative) + d.shift + 5 * xText
                         : xScale(d.cumulative) + d.shift + 2 * xText
             }
         }
@@ -235,5 +270,3 @@ function vis7() {
         
     })
 }
-
-vis7();

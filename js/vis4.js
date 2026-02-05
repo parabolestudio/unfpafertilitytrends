@@ -1,11 +1,34 @@
-function vis4() {
-    const title = "Structural barriers drive high rates of unintended fertility in certain communities";
-    const subtitle = "Average number of children women want versus the number they actually have (among women aged 15–49)";
-    const source = "Source: Own elaboration, based on INEI - ENDES 1986 and 2024";
+function vis4(inEn) {
+    const title = inEn
+        ? "Structural barriers drive high rates of unintended fertility in certain communities"
+        : "Las barreras estructurales impulsan altas tasas de fecundidad no intencional en ciertas comunidades";
+    const subtitle = inEn
+        ? "Average number of children women want versus the number they actually have (among women aged 15–49)"
+        : "Promedio de hijos que las mujeres desean versus el número que realmente tienen (mujeres de 15-49 años)";
+    const source = inEn
+        ? "Source: Own elaboration, based on INEI - ENDES 1986 and 2024"
+        : "Fuente: Elaboración propia, basada en INEI - ENDES 1986 y 2024";
+    const calloutTitle = inEn
+        ? "The inequality"
+        : "La desigualdad";
+    const calloutParagraph = inEn
+        ? "Certain sociodemographic characteristics–like living in a rural, low income community–constrain women’s ability to exercise their reproductive rights"
+        : "Ciertas características sociodemográficas —como vivir en una comunidad rural y de bajos ingresos— limitan la capacidad de las mujeres para ejercer sus derechos reproductivos";
+    const legendTitle = inEn
+        ? "Select year"
+        : "Seleccionar año";
+    const legendItem1 = inEn
+        ? "Pregnancies"
+        : "Fecundidad";
 
     d3.select("#title4").html(title);
     d3.select("#subtitle4").html(subtitle);
     d3.select("#source4").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
+    d3.select("#legend-title").html(legendTitle);
+    d3.select("#pregnancies").html(legendItem1);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
@@ -41,7 +64,10 @@ function vis4() {
 
     if (smallScreen) {
         d3.select("#img-legend")
-            .attr("src", "./assets/legend4-mobile.svg")
+            .attr("src", `./assets/legend4-mobile${inEn ? '' : '-es'}.svg`)
+    } else {
+        d3.select("#img-legend")
+            .attr("src", `./assets/legend4${inEn ? '' : '-es'}.svg`)
     }
     
 
@@ -135,7 +161,7 @@ function vis4() {
                     .attr("text-anchor", "middle")
                     .attr("y", height - 20 + 14)
                     .attr("x", d => xScale(d))
-                    .text(d => `${d}`);
+                    .text(d => formatNumber(d, inEn));
                     
             const gGroups = svg.selectAll(".group")
                 .data(groups)
@@ -159,7 +185,7 @@ function vis4() {
                 .join("tspan")
                     .attr("x", 0)
                     .attr("dy", (_, i) => i === 0 ? '10px': `16px`)
-                    .text(d => d);
+                    .text(d => translate(d, inEn));
 
             const gLevel = gGroups.selectAll(".g-level")
                 .data(d => data.filter(datum => datum.group === d && datum.year === selectedYear).map((lvl,i) => ({
@@ -178,7 +204,7 @@ function vis4() {
                     .style("font-weight", 400)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("x", xLevel)
-                    .text(d => d.desired === 0 || d.observed === 0 ? `${d.level}*` : `${d.level}`);
+                    .text(d => d.desired === 0 || d.observed === 0 ? `${translate(d.level, inEn)}*` : `${translate(d.level, inEn)}`);
 
             gLevel.selectAll(".level-rect")
                 .data(d => [d])
@@ -191,13 +217,14 @@ function vis4() {
                     .attr("height", rectHeight)
                     .on("mousemove", (evt, d) => {
                         const [x, y] = d3.pointer(evt, wrapper.node());
+                        const diff = ((d.observed-d.desired)/d.desired * 100).toFixed(1);
                         tooltip
                             .style("display", "block")
                             .style("top", `${y}px`)
                             .style("left", `${x + 8}px`)
                             .html(`
                                 <p class="country mb">${d.level}</p>
-                                <p>${((d.observed-d.desired)/d.desired * 100).toFixed(1)}% more pregnancies observed than desired</p>
+                                <p>${inEn ? diff : diff.replace(".", ",")}% ${translate("more pregnancies observed than desired", inEn)}</p>
                             `);
 
                         tooltipCircle
@@ -232,7 +259,7 @@ function vis4() {
                     .attr("x", d => xScale(d.desired) - xText)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("text-anchor", "end")
-                    .text(d => d.desired === 0 ? '' : d.desired);
+                    .text(d => d.desired === 0 ? '' : formatNumber(d.desired, inEn));
 
             gLevel.selectAll(".level-observed")
                 .data(d => [d])
@@ -255,7 +282,7 @@ function vis4() {
                     .attr("x", d => xScale(d.observed) + xText)
                     .attr("y", d => yLevel(d.idx) + 10)
                     .attr("text-anchor", "start")
-                    .text(d => d.observed === 0 ? '' : d.observed);
+                    .text(d => d.observed === 0 ? '' : formatNumber(d.observed, inEn));
 
             const averageData = data.find(d => d.group === 'Average' && d.year === selectedYear);
             const avgAvg = (averageData.desired + averageData.observed)/2;
@@ -327,7 +354,7 @@ function vis4() {
                     .attr("x", d => xScale(d))
                     .attr("y", height - margin.bottom + 44)
                     .attr("text-anchor", "middle")
-                    .text("National average")
+                    .text(translate("National average", inEn))
         }
         
         updateVis();
@@ -340,5 +367,3 @@ function vis4() {
             .style("opacity", 0);
     })
 }
-
-vis4();

@@ -1,11 +1,25 @@
-function vis6() {
-    const title = "Adolescents face a disproportionate risk of death due to pregnancy";
-    const subtitle = "Maternal mortality rate per 100,000 live births, 2024";
-    const source = "Source: Maternal Mortality Inter-Agency Group (MMEIG); Ministry of Health - Online Live Birth Certificate Registration System; Ministry of Health - Maternal Mortality and Severe Maternal Morbidity Situation Room";
+function vis6(inEn) {
+    const title = inEn
+        ? "Adolescents face a disproportionate risk of death due to pregnancy"
+        : "Las adolescentes enfrentan un riesgo desproporcionado de muerte debido al embarazo";
+    const subtitle = inEn
+        ? "Maternal mortality rate per 100,000 live births, 2024"
+        : "Razón de mortalidad materna por cada 100.000 nacidos vivos, 2024";
+    const source = inEn
+        ? "Source: Maternal Mortality Inter-Agency Group (MMEIG); Ministry of Health - Online Live Birth Certificate Registration System; Ministry of Health - Maternal Mortality and Severe Maternal Morbidity Situation Room"
+        : "Fuente: Grupo Interinstitucional sobre Mortalidad Materna (MMEIG); Ministerio de Salud - Sistema de registro en línea de certificados de nacimiento vivo; Ministerio de Salud - Sala de situación sobre mortalidad materna y morbilidad materna grave";
+    const calloutTitle = inEn
+        ? "The risk"
+        : "El riesgo";
+    const calloutParagraph = inEn
+        ? "Young girls face many more life-threatening complications when they get pregnant"
+        : "Las niñas enfrentan muchas más complicaciones potencialmente mortales cuando quedan embarazadas";
 
     d3.select("#title6").html(title);
     d3.select("#subtitle6").html(subtitle);
     d3.select("#source6").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
 
     const width = isMobile ? 0.9 * window.innerWidth : svgWidth;
     const height = 245;
@@ -36,7 +50,7 @@ function vis6() {
     const totalWidth = 2 * pieShift + piePadding + 150;
 
     d3.select("#bubble6")
-        .style("top", totalWidth > window.innerWidth ? "30px" : "50px")
+        .style("top", totalWidth > window.innerWidth ? (inEn ? "30px" : "54px") : "50px")
         .style("left", totalWidth > window.innerWidth ? "10px" : `${2 * pieShift + piePadding}px`);
 
     const gPies = svg.selectAll(".pie")
@@ -56,7 +70,7 @@ function vis6() {
             .attr("text-anchor", "middle")
             .attr("x", pieWidth / 2)
             .attr("y", height)
-            .text(d => d);
+            .text(d => translate(d, inEn));
 
     gPies.selectAll(".pie-circle")
         .data(d => d3.range(data[d]))
@@ -91,5 +105,3 @@ function vis6() {
 
     
 }
-
-vis6();

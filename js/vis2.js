@@ -1,11 +1,30 @@
-function vis2() {
-    const title = "Where a girl lives strongly shapes early motherhood";
-    const subtitle = "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2024";
-    const source = "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024";
+function vis2(inEn) {
+    const title = inEn
+        ? "Where a girl lives strongly shapes early motherhood"
+        : "El lugar donde vive una niña determina fuertemente la maternidad temprana";
+    const subtitle = inEn
+        ? "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2024"
+        : "Número de nacidos vivos por cada 1.000 niñas y adolescentes de 10 a 19 años por región, 2024";
+    const source = inEn
+        ? "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024"
+        : "Fuente: Sistema de Registro Civil en Línea (CNV), Ministerio de Salud; estimaciones de población, 2024";
+    const calloutTitle = inEn
+        ? "The proof"
+        : "La prueba";
+    const calloutParagraph = inEn
+        ? "Targeted interventions have reduced rates in key regions, demonstrating that this trend is reversible with multisectoral action"
+        : "Las intervenciones focalizadas han logrado reducir las tasas en regiones clave, demostrando que esta tendencia es reversible con acción multisectorial";
+    const legend = inEn
+        ? "Number of live births" 
+        : "Nacimientos por cada 1.000 habitantes";
+
 
     d3.select("#title2").html(title);
     d3.select("#subtitle2").html(subtitle);
     d3.select("#source2").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
@@ -104,7 +123,7 @@ function vis2() {
                         .style("left", `${x + 8}px`)
                         .html(`
                             <p class="country mb">${d.properties.departamento}</p>
-                            <p>Number of live births</p>
+                            <p>${legend}</p>
                             <p class="bold">${d.properties.value}</p>
                         `);
 
@@ -136,7 +155,7 @@ function vis2() {
             .attr("text-anchor", 'begin')
             .style("font-weight", 700)
             .style("font-size", '14px')
-            .text("Births per 1,000")
+            .text(translate("Births per 1,000", inEn))
 
         gBar.append("rect")
             .attr("x", xColorbar)
@@ -205,7 +224,7 @@ function vis2() {
                 .attr("text-anchor", 'begin')
                 .style("font-weight", 400)
                 .style("font-size", '14px')
-                .text(d => d.value);
+                .text(d => formatNumber(d.value, inEn));
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")
@@ -216,5 +235,3 @@ function vis2() {
 
     })
 }
-
-vis2();

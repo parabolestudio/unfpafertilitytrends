@@ -1,7 +1,13 @@
-function vis1() {
-    const title = "High adolescent fertility persists in the region despite global trends";
-    const subtitle = "Adolescent fertility rate per 1,000 women aged 15-19 years, South American countries, 2024";
-    const source = "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025";
+function vis1(inEn) {
+    const title = inEn
+        ? "High adolescent fertility persists in the region despite global trends"
+        : "La alta fecundidad adolescente persiste en la región a pesar de las tendencias globales yendo a la baja";
+    const subtitle = inEn
+        ? "Adolescent fertility rate per 1,000 women aged 15-19 years, South American countries, 2024"
+        : "Tasa específica de fecundidad adolescente por cada 1.000 mujeres de 15 a 19 años, países de América del Sur, 2024";
+    const source = inEn
+        ? "Source: UNFPA - Socioeconomic Consequences of Adolescent Pregnancy in LAC, 2025"
+        : "Fuente: UNFPA - Consecuencias socioeconómicas del embarazo adolescente en América Latina y el Caribe, 2025";
 
     d3.select("#title1").html(title);
     d3.select("#subtitle1").html(subtitle);
@@ -84,7 +90,7 @@ function vis1() {
                 .attr("text-anchor", "start")
                 .attr("x", 0)
                 .attr("y", yScale.bandwidth() - 5)
-                .text(d => d.Country)
+                .text(d => translate(d.Country, inEn))
 
         gCountries.selectAll(".country-bar")
             .data(d => [d])
@@ -102,10 +108,10 @@ function vis1() {
                         .style("top", `${y}px`)
                         .style("left", `${x + 8}px`)
                         .html(`
-                            <p class="country">${d.Country}</p>
+                            <p class="country">${translate(d.Country, inEn)}</p>
                             <p class="value mb">${d.Value}</p>
-                            <p>LAC: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
-                            <p>World: ${lineData.find(ld => ld.Country === 'World').Value}</p>
+                            <p>${translate('LAC')}: ${lineData.find(ld => ld.Country === 'Latin America and the Caribbean').Value}</p>
+                            <p>${translate('World')}: ${lineData.find(ld => ld.Country === 'World').Value}</p>
                         `);
 
                     tooltipCircle
@@ -176,7 +182,7 @@ function vis1() {
             .join("tspan")
                 .attr("x", 6)
                 .attr("dy", (_,i) => i === 0 ? 0 : "12px")
-                .text(d => d);
+                .text(d => translate(d, inEn));
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")
@@ -186,5 +192,3 @@ function vis1() {
             .style("opacity", 0);
     })
 }
-
-vis1();

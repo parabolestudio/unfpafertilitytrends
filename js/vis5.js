@@ -1,11 +1,38 @@
-function vis5() {
-    const title = "Adolescents face a significantly higher risk of sexual violence than adult women";
-    const subtitle = "Share of women who experienced physical or sexual violence in the past 12 months";
-    const source = "Source: INEI - ENDES";
+function vis5(inEn) {
+    const title = inEn
+        ? "Adolescents face a significantly higher risk of sexual violence than adult women"
+        : "Las adolescentes enfrentan un riesgo de violencia sexual significativamente mayor que las mujeres adultas";
+    const subtitle = inEn
+        ? "Share of women who experienced physical or sexual violence in the past 12 months"
+        : "Porcentaje de mujeres que experimentaron violencia física o sexual en los últimos 12 meses";
+    const source = inEn
+        ? "Source: INEI - ENDES"
+        : "Fuente: INEI - ENDES";
+    const calloutTitle = inEn
+        ? "The gap"
+        : "La brecha";
+    const calloutParagraph = inEn
+        ? "Violence against adolescents is nearly twice as high as the overall rate"
+        : "La violencia contra las adolescentes es casi el doble que la tasa general";
+    const legendTitle = inEn
+        ? "Age group"
+        : "Grupo de edad";
+    const legendItem1 = inEn
+        ? "15 to 49"
+        : "15 a 49";
+    const legendItem2 = inEn
+        ? "15 to 19"
+        : "15 a 19";
 
     d3.select("#title5").html(title);
     d3.select("#subtitle5").html(subtitle);
     d3.select("#source5").html(source);
+    d3.select(".callout-title").html(calloutTitle);
+    d3.select(".callout-p").html(calloutParagraph);
+    d3.select("#legend-title").html(legendTitle);
+    d3.select("#legend-item-1").html(legendItem1);
+    d3.select("#legend-item-2").html(legendItem2);
+
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
@@ -119,13 +146,14 @@ function vis5() {
                 .attr("height", d => yScale(d['15 to 49']) - yScale(d['15 to 19']))
                 .on("mousemove", (evt, d) => {
                     const [x, y] = d3.pointer(evt, wrapper.node());
+                    const diff = (d['15 to 19']/d['15 to 49']).toFixed(1)
                     tooltip
                         .style("display", "block")
                         .style("top", `${y}px`)
                         .style("left", `${x + 8}px`)
                         .html(`
-                            <p class="country mb">Sexual violence (15-19)</p>
-                            <p>${(d['15 to 19']/d['15 to 49']).toFixed(1)} times more likely than among 15-49 year olds</p>
+                            <p class="country mb">${translate("Sexual violence", inEn)} (15-19)</p>
+                            <p>${inEn ? diff : diff.replace(".", ",")} ${translate("times more likely than among 15-49 year olds", inEn)}</p>
                         `);
 
                     tooltipCircle
@@ -159,7 +187,7 @@ function vis5() {
                 .style("font-family", "Atkinson Hyperlegible")
                 .attr("x", rectWidth/2 + 6)
                 .attr("y", d => yScale(d.value) + 5)
-                .text(d => d.value);
+                .text(d => formatNumber(d.value, inEn));
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")
@@ -169,5 +197,3 @@ function vis5() {
             .style("opacity", 0);
     })
 }
-
-vis5();
