@@ -186,7 +186,7 @@ function vis5(inEn) {
                 .style("font-family", "Atkinson Hyperlegible")
                 .attr("x", rectWidth/2 + 6)
                 .attr("y", d => yScale(d.value) + 5)
-                .text(d => d.value);
+                .text(d => formatNumber(d.value, inEn));
 
         const tooltipCircle = svg.append("circle")
             .attr("class", "tooltip-circle")
