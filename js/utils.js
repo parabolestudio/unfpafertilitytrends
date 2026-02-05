@@ -22,7 +22,12 @@ const dictionary = {
     "Brazil": "Brasil",
     "Births per 1,000": "Nacimientos por cada 1.000 habitantes",
     'National estimate': "Estimación nacional",
-    'Adolescents (≤19)': 'Adolescentes (≤19)'
+    'Adolescents (≤19)': 'Adolescentes (≤19)',
+    "Education": "Educación",
+    "Employment and inactivity": "Empleo e inactividad",
+    "Income": "Ingresos laborales",
+    "Healthcare": "Asistencia sanitaria",
+    "Tax revenue loss": "Pérdida de ingresos fiscales"
 };
 
 const translate = (word, inEn) => inEn ? word : (Object.keys(dictionary).includes(word) ? dictionary[word] : word);

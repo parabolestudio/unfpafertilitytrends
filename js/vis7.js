@@ -84,7 +84,7 @@ function vis7(inEn) {
                     type: d.Type,
                     who: d.Who,
                     shift: i * strokeWidth,
-                    words: formatType(d.Type)
+                    words: formatType(translate(d.Type, inEn))
                 }
             })
             return _data
@@ -95,6 +95,14 @@ function vis7(inEn) {
                 return ["Employment", "and inactivity"];
             } else if (type === "Tax revenue loss") {
                 return ["Tax", "revenue", "loss"];
+            } else if (type === "Empleo e inactividad") {
+                return ["Empleo e", "inactividad"]
+            } else if (type === "Ingresos laborales") {
+                return ["Ingresos", "laborales"]
+            } else if (type === "Asistencia sanitaria") {
+                return ["Asistencia", "sanitaria"]
+            } else if (type === "Pérdida de ingresos fiscales") {
+                return ["Pérdida de", "ingresos", "fiscales"]
             } else {
                 return [type];
             }
@@ -138,7 +146,7 @@ function vis7(inEn) {
                         : xScale(d.cumulative) + d.shift + 12 * xText + shift
             } else {
                 return d.type === 'Healthcare'
-                        ? xScale(d.cumulative) + d.shift + 6 * xText
+                        ? xScale(d.cumulative) + d.shift + 5 * xText
                         : xScale(d.cumulative) + d.shift + 2 * xText
             }
         }
