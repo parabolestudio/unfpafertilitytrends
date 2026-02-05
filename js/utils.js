@@ -20,7 +20,9 @@ const dictionary = {
     "LAC": "ALC",
     "Peru": "Perú",
     "Brazil": "Brasil",
-    "Births per 1,000": "Nacimientos por cada 1.000 habitantes"
+    "Births per 1,000": "Nacimientos por cada 1.000 habitantes",
+    'National estimate': "Estimación nacional",
+    'Adolescents (≤19)': 'Adolescentes (≤19)'
 };
 
 const translate = (word, inEn) => inEn ? word : (Object.keys(dictionary).includes(word) ? dictionary[word] : word);

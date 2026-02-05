@@ -36,15 +36,10 @@ function vis6(inEn) {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
-    const data = inEn
-        ? {
-            'National estimate': 51,
-            'Adolescents (≤19)': 84
-        }
-        : {
-            'Estimación nacional': 51,
-            'Adolescentes (≤19)': 84
-        };
+    const data = {
+        'National estimate': 51,
+        'Adolescents (≤19)': 84
+    };
 
     const circleRadius = isMobile ? 6 : 7.5;
     const circlePadding = isMobile ? 2.5 : 4;
@@ -75,7 +70,7 @@ function vis6(inEn) {
             .attr("text-anchor", "middle")
             .attr("x", pieWidth / 2)
             .attr("y", height)
-            .text(d => d);
+            .text(d => translate(d, inEn));
 
     gPies.selectAll(".pie-circle")
         .data(d => d3.range(data[d]))
