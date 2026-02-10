@@ -36,7 +36,7 @@ function vis7(inEn) {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = isMobile ? window.innerWidth * 0.9 : svgWidth;
+    const width = isMobile ? window.innerWidth * 0.95 : svgWidth;
     const height = 260;
     const margin = {
         left: isMobile ? 5 : 20,
@@ -179,7 +179,7 @@ function vis7(inEn) {
                 .attr("class", "rect-label")
                 .attr("x", getX)
                 .attr("y", getY)
-                .style("font-size", "14px")
+                .style("font-size", isMobile ? "12px" : "14px")
                 .style("font-weight", 700)
                 .style("font-family", "Atkinson Hyperlegible")
                 .attr("text-anchor", getTextAnchor)
