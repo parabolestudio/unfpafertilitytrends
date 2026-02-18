@@ -36,7 +36,7 @@ function vis5(inEn) {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = isMobile ? 0.9 * window.innerWidth - 40 : 534;
+    const width = isMobile ? window.innerWidth - 40 : 534;
     const height = 376;
     const margin = {
         left: 35,

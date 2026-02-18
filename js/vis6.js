@@ -21,7 +21,7 @@ function vis6(inEn) {
     d3.select(".callout-title").html(calloutTitle);
     d3.select(".callout-p").html(calloutParagraph);
 
-    const width = isMobile ? 0.9 * window.innerWidth : svgWidth;
+    const width = isMobile ? window.innerWidth : svgWidth;
     const height = 245;
     const margin = {
         left: 90,
@@ -49,8 +49,17 @@ function vis6(inEn) {
     const pieShift = pieWidth + piePadding;
     const totalWidth = 2 * pieShift + piePadding + 150;
 
+    console.log(totalWidth > window.innerWidth, inEn)
+
     d3.select("#bubble6")
-        .style("top", totalWidth > window.innerWidth ? (inEn ? "30px" : "54px") : "50px")
+        .style("top", totalWidth > window.innerWidth 
+            ? (inEn
+                ? (window.innerWidth < 310 ? "56px" : 
+                    (window.innerWidth < 326 ? "40px" : "30px")
+                ) 
+                : (window.innerWidth < 310 ? "56px" : "54px")
+            )
+            : "50px")
         .style("left", totalWidth > window.innerWidth ? "10px" : `${2 * pieShift + piePadding}px`);
 
     const gPies = svg.selectAll(".pie")

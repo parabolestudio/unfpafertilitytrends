@@ -10,6 +10,7 @@
 body {
     font-family: "Atkinson Hyperlegible", sans-serif;
     color: var(--black);
+    margin: 0;
 }
 
 .wrapper {
@@ -256,6 +257,27 @@ span.button:last-child {
     }
 }
 
+@media screen and (max-width: 340px) {
+    span.button {
+        padding: 6px 6px;
+        background-color: var(--gray);
+        cursor: pointer;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #legend7 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #legend7 .legend-item {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 @media screen and (max-width: 550px) {
     #legend4 {
         flex-direction: row;
@@ -275,16 +297,6 @@ span.button:last-child {
     #legend4 .buttons,
     #img-legend  {
         line-height: 47px;
-    }
-
-    #legend7 {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #legend7 .legend-item {
-        display: flex;
-        flex-direction: row;
     }
 }
 

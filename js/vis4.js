@@ -45,7 +45,7 @@ function vis4(inEn) {
         }
     }
 
-    const width = smallScreen ? 0.9 * window.innerWidth : svgWidth;
+    const width = smallScreen ? window.innerWidth : svgWidth;
     const height = 520;
     const xGroup = 0;
     const xLevel = smallScreen ? 0 : 120;

@@ -36,7 +36,7 @@ function vis7(inEn) {
     const wrapper = d3.select(".wrapper");
     const tooltip = d3.select(".tooltip");
 
-    const width = isMobile ? window.innerWidth * 0.95 : svgWidth;
+    const width = isMobile ? window.innerWidth : svgWidth;
     const height = 260;
     const margin = {
         left: isMobile ? 5 : 20,
@@ -51,7 +51,7 @@ function vis7(inEn) {
         .attr('width', width)
         .attr("viewbox", `0 0 ${width} ${height}`);
 
-    if (isMobile) {
+    if (window.innerWidth < 450) {
         d3.select("#legend7 .legend-title").html('')
             .style("margin-right", "0")
     }
