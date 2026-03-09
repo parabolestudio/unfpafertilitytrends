@@ -124,7 +124,7 @@ function vis2(inEn) {
                         .html(`
                             <p class="country mb">${d.properties.departamento}</p>
                             <p>${legend}</p>
-                            <p class="bold">${d.properties.value}</p>
+                            <p class="bold">${formatNumber(d.properties.value, inEn)}</p>
                         `);
 
                     tooltipCircle
