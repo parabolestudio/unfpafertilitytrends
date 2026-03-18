@@ -18,7 +18,7 @@ function vis4(inEn) {
         ? "Select year"
         : "Seleccionar año";
     const legendItem1 = inEn
-        ? "Pregnancies"
+        ? "Fertility"
         : "Fecundidad";
 
     d3.select("#title4").html(title);
