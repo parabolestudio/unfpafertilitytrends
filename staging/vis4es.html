@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <title>UNFPA Fertility Trends</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="title" id="title4"></div>
+            <div class="subtitle" id="subtitle4"></div>
+            <div class="legend" id="legend4">
+                <div class="legend-item">
+                    <div class="legend-title" id="legend-title"></div>
+                    <div class="buttons">
+                        <span class="button">1986</span>
+                        <span class="button checked">2024</span>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-title" id="pregnancies"></div>
+                    <div>
+                        <img id="img-legend" src="./assets/legend4.svg" />
+                    </div>
+                </div>
+                <!-- <div class="legend-label">15 to 49</div>
+                <div class="circle orange-circle"></div>
+                <div class="legend-label">15 to 19</div> -->
+            </div>
+            <div id="vis4"></div>
+            <div id="bubble4" class="callout">
+                <p class="callout-title"></p>
+                <p class="callout-p"></p>
+            </div>
+            <div class="source" id="source4"></div>
+            <div class="note" id="note4"></div>
+            <div class="tooltip"></div>
+        </div>
+
+        <script src="./js/utils.js"></script>
+        <script src="./js/vis4.js"></script>
+        <script>
+            vis4(false);
+        </script>
+  </body>
+</html>

@@ -1,0 +1,313 @@
+:root {
+    --black: #131619;
+    --orange: #F96000;
+    --dark-orange: #AE4300;
+    --gray: #EFF1F7;
+    --mid-orange: #FB904D;
+}
+
+
+body {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    color: var(--black);
+    margin: 0;
+}
+
+.wrapper {
+    width: 750px;
+    position: relative;
+    max-width: 100%;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    margin-bottom: 20px;
+}
+
+.legend {
+    margin-bottom: 20px;
+}
+
+.legend > * {
+    display: inline-block;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+.legend-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 14px;
+}
+
+.legend-label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+#legend4 {
+    margin-bottom: -20px;
+    display: flex;
+    gap: 6px;
+    align-items: start;
+}
+
+#legend4 .legend-item {
+    display: flex;
+    flex-direction: row;
+}
+
+#legend4 > * {
+    line-height: 72px;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    margin-right: 4px;
+}
+
+.gray-circle {
+    border: 0.5px solid var(--black);
+    background-color: var(--gray);
+}
+
+.orange-circle {
+    border: 0.5px solid var(--orange);
+    background-color: var(--orange);
+}
+
+.mid-orange-circle {
+    border: 0.5px solid var(--mid-orange);
+    background-color: var(--mid-orange);
+}
+
+.source, 
+.note {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+}
+
+.source { 
+    margin-top: 21px;
+}
+
+.callout {
+    position: absolute;
+    max-width: 150px;
+}
+
+.callout7 {
+    position: relative;
+    width: 90vw;
+    min-width: 308px;
+    margin: -60px auto 0 auto;
+}
+
+
+span.big-number {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 700;
+    font-size: 64px;
+    color: var(--orange);
+}
+
+.callout p {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0%;
+    color: var(--black);
+    margin: 0;
+}
+
+.callout p.callout-title {
+    font-family: "Atkinson Hyperlegible";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0%;
+    color: var(--orange);
+    margin-bottom: 8px;
+}
+
+.callout::before {
+    z-index: -1;
+    position: relative;
+    top: 24px;
+    left: -34px;
+    content: url("../assets/bubble.svg");
+    width: 44px;
+    height: 50px;
+}
+
+.callout7::before {
+    position: absolute;
+    top: 0px;
+    left: -24px;
+}
+
+.tooltip {
+    position: absolute;
+    border: 1px solid #000;
+    border-radius: 6px;
+    padding: 16px 8px;
+    font-size: 14px;
+    display: none;
+    background-color: #FFF;
+    max-width: 175px;
+}
+
+.tooltip p {
+    margin: 0;
+}
+
+.tooltip p.mb {
+    margin-bottom: 12px;
+}
+
+.tooltip p.country {
+    color: var(--dark-orange);
+    font-weight: 700;
+}
+
+.tooltip p.bold {
+    font-weight: 700;
+}
+
+.buttons {
+    margin-right: 22px;
+}
+
+span.button {
+    padding: 6px 12px;
+    background-color: var(--gray);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+span.button.checked {
+    background-color: var(--black);
+    color: #fff;
+    font-weight: 700;
+}
+
+span.button:first-child {
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-right: -4px;
+}
+
+span.button:last-child {
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.axis text {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 14px;
+    color: var(--black);
+    opacity: 0.4;
+}
+
+.axis line {
+    stroke: var(--black);
+    stroke-width: 0.5px;
+    opacity: 0.4;
+}
+
+.tooltip-circle,
+.average-line {
+    pointer-events: none;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+#legend7 {
+    display: flex;
+    flex-direction: row;
+}
+
+#legend7 .legend-item {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (min-width: 750px) {
+    .callout-map::before {
+        top: 40px;
+        left: 120px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    span.button {
+        padding: 6px 6px;
+        background-color: var(--gray);
+        cursor: pointer;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #legend7 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #legend7 .legend-item {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #legend4 {
+        flex-direction: row;
+        /* margin-bottom: -44px; */
+    }
+
+    #legend4 .legend-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #legend4 .legend-title {
+        line-height: 14px;
+    }
+
+    #legend4 .buttons,
+    #img-legend  {
+        line-height: 47px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .callout::before {
+        top: 44px;
+        left: -20px;
+    }
+
+    .callout7::before {
+        top: 0;
+        left: -24px;
+    }
+}
