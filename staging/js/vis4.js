@@ -327,7 +327,7 @@ function vis4(inEn) {
                     .attr("x", d => d.idx === 0 ? -xText : xText)
                     .attr("y", height - margin.bottom + 24)
                     .attr("text-anchor", d => d.idx === 0 ? "end" : "start")
-                    .text(d => d.idx === 0 ? d.desired : d.observed);
+                    .text(d => d.idx === 0 ? formatNumber(d.desired, inEn) : formatNumber(d.observed, inEn));
 
             gAvg.selectAll(".avg-line")
                 .data(d => [d])
