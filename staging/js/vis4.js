@@ -223,8 +223,8 @@ function vis4(inEn) {
                             .style("top", `${y}px`)
                             .style("left", `${x + 8}px`)
                             .html(`
-                                <p class="country mb">${d.level}</p>
-                                <p>${inEn ? diff : diff.replace(".", ",")}% ${translate("more pregnancies observed than desired", inEn)}</p>
+                                <p class="country mb">${translate(d.level, inEn)}</p>
+                                <p>${formatNumber(diff, inEn)}% ${translate("more pregnancies observed than desired", inEn)}</p>
                             `);
 
                         tooltipCircle
