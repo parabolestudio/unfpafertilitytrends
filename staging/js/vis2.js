@@ -3,11 +3,11 @@ function vis2(inEn) {
         ? "Where a girl lives strongly shapes early motherhood"
         : "El lugar donde vive una niña determina fuertemente la maternidad temprana";
     const subtitle = inEn
-        ? "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2024"
-        : "Número de nacidos vivos por cada 1.000 niñas y adolescentes de 10 a 19 años por región, 2024";
+        ? "Number of live births per 1,000 girls and adolescents aged 10-19 by region, 2025"
+        : "Número de nacidos vivos por cada 1.000 niñas y adolescentes de 10 a 19 años por región, 2025";
     const source = inEn
-        ? "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2024"
-        : "Fuente: Sistema de Registro Civil en Línea (CNV), Ministerio de Salud; estimaciones de población, 2024";
+        ? "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2025"
+        : "Fuente: Sistema de Registro Civil en Línea (CNV), Ministerio de Salud; estimaciones de población, 2025";
     const calloutTitle = inEn
         ? "The proof"
         : "La prueba";
@@ -15,7 +15,7 @@ function vis2(inEn) {
         ? "Targeted interventions have reduced rates in key regions, demonstrating that this trend is reversible with multisectoral action"
         : "Las intervenciones focalizadas han logrado reducir las tasas en regiones clave, demostrando que esta tendencia es reversible con acción multisectorial";
     const legend = inEn
-        ? "Number of live births" 
+        ? "Number of live births"
         : "Nacimientos por cada 1.000 habitantes";
 
 
@@ -131,7 +131,7 @@ function vis2(inEn) {
                         .attr("cx", evt.offsetX)
                         .attr("cy", evt.offsetY)
                         .style("opacity", 1);
-                    
+
                 })
                 .on("mouseout", () => {
                     tooltip.style("display", "none");
