@@ -52,7 +52,7 @@ function vis5(inEn) {
         .attr("viewbox", `0 0 ${width} ${height}`);
 
     d3.select("#bubble5")
-        .style("top", isMobile ? "380px" : "230px")
+        .style("top", isMobile ? (inEn ? "380px" : "395px") : "230px")
         .style("left", isMobile ? `${window.innerWidth - 140}px` : "460px");
 
     Promise.all([
@@ -160,7 +160,7 @@ function vis5(inEn) {
                         .attr("cx", evt.offsetX)
                         .attr("cy", evt.offsetY)
                         .style("opacity", 1);
-                    
+
                 })
                 .on("mouseout", () => {
                     tooltip.style("display", "none");
