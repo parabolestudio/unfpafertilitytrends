@@ -40,7 +40,7 @@ function vis2(inEn) {
 
     const colormap = ["#FFE8D9", "#FFD0B2", "#F96000", "#702B00"];
     const stops = [0, 0.33, 0.66, 1];
-    const colorExtent = [0, 45];
+    const colorExtent = [0, 49];
     const xColorbar = 4;
     const yColorbar = height - 60;
     const heightColorbar = 20;
