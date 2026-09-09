@@ -45,7 +45,7 @@ function vis2(inEn) {
     const yColorbar = height - 60;
     const heightColorbar = 20;
     const widthColorbar = isMobile ? 100 : 175;
-    const xHighlighted = isMobile ? 220 : 600;
+    const xHighlighted = isMobile ? 260 : 600;
 
     const interpolator = d3.piecewise(colormap);
     // const interpolator = d3.interpolateRgbBasis(colormap);
