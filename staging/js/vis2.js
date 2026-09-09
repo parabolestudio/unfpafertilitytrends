@@ -7,7 +7,7 @@ function vis2(inEn) {
         : "Número de nacidos vivos por cada 1.000 niñas y adolescentes de 10 a 19 años por región, 2025";
     const source = inEn
         ? "Source: Online Live Birth Registration System (CNV), Ministry of Health; population estimates, 2025"
-        : "Fuente: Sistema de Registro Civil en Línea (CNV), Ministerio de Salud; estimaciones de población, 2025";
+        : "Fuente: Sistema de Certificado del Nacido Vivo en Línea (CNV), Ministerio de Salud; estimaciones de población, 2025";
     const calloutTitle = inEn
         ? "The proof"
         : "La prueba";
