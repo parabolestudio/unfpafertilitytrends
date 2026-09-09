@@ -12,8 +12,8 @@ function vis5(inEn) {
         ? "The gap"
         : "La brecha";
     const calloutParagraph = inEn
-        ? "Violence against adolescents is nearly twice as high as the overall rate"
-        : "La violencia contra las adolescentes es casi el doble que la tasa general";
+        ? "Violence against adolescents is about one third higher than the overall rate"
+        : "La violencia contra las adolescentes es casi un tercio más alta que la tasa general";
     const legendTitle = inEn
         ? "Age group"
         : "Grupo de edad";
