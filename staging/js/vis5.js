@@ -41,7 +41,7 @@ function vis5(inEn) {
     const margin = {
         left: 35,
         top: 10,
-        right: 60,
+        right: isMobile ? 100 : 60,
         bottom: 20
     }
 
