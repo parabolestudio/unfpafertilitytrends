@@ -129,7 +129,7 @@ function vis4(inEn) {
             d3.select("#note4").html(is24 ? "&#8203;" : (inEn ? "*Data is missing for 1986" : "*No se dispone de datos para 1986"))
 
             const xTicks = selectedYear === '2025'
-                ? [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+                ? [0, 1, 2, 3, 4, 5]
                 // ? [0, 1, 2, 3, 4, 5, 6, 7]
                 : [0, 1, 2, 3, 4, 5, 6, 7];
             const xExtent = [xTicks[0], xTicks[xTicks.length - 1]];
