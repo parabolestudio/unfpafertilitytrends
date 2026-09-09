@@ -139,7 +139,7 @@ function vis4(inEn) {
                 .range([margin.left, width - margin.right]);
 
             d3.select("#bubble4")
-                .style("top", is24 ? `180px` : "420px")
+                .style("top", is24 ? `180px` : (inEn ? "420px" : "500px"))
                 .style("left", is24 ? `${xScale(3.5)}px` : `${xScale(5)}px`);
 
             if (window.innerWidth < 470) {
