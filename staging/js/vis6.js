@@ -55,7 +55,7 @@ function vis6(inEn) {
                 ? (window.innerWidth < 310 ? "56px" : 
                     (window.innerWidth < 326 ? "40px" : "30px")
                 ) 
-                : (window.innerWidth < 310 ? "56px" : "54px")
+                : (window.innerWidth < 420 ? "68px" : (window.innerWidth < 424 ? "46px" : "28px"))
             )
             : "50px")
         .style("left", totalWidth > window.innerWidth ? "10px" : `${2 * pieShift + piePadding}px`);
