@@ -6,8 +6,8 @@ function vis4(inEn) {
         ? "Average number of children women want versus the number they actually have (among women aged 15–49)"
         : "Promedio de hijos que las mujeres desean versus el número que realmente tienen (mujeres de 15-49 años)";
     const source = inEn
-        ? "Source: Own elaboration, based on INEI - ENDES 1986 and 2024"
-        : "Fuente: Elaboración propia, basada en INEI - ENDES 1986 y 2024";
+        ? "Source: Own elaboration, based on INEI - ENDES 1986 and 2025"
+        : "Fuente: Elaboración propia, basada en INEI - ENDES 1986 y 2025";
     const calloutTitle = inEn
         ? "The inequality"
         : "La desigualdad";
@@ -69,30 +69,30 @@ function vis4(inEn) {
         d3.select("#img-legend")
             .attr("src", `./assets/legend4${inEn ? '' : '-es'}.svg`)
     }
-    
+
 
     Promise.all([
         d3.csv("./data/vis4.csv")
     ])
     .then(rawData => {
 
-        let selectedYear = '2024';
+        let selectedYear = '2025';
         const xText = 10;
 
         const buttonsDiv = d3.select(".buttons");
-        
+
         const buttons = buttonsDiv.selectAll(".button")
-        
-        buttons.data(['1986', '2024'])
+
+        buttons.data(['1986', '2025'])
             .join("span")
                 .attr("class", "button")
-                .classed("checked", d => d === selectedYear);
-
-        buttons.on("click", (evt, d) => {
+                .classed("checked", d => d === selectedYear)
+            .html(d => d)
+            .on("click", (evt, d) => {
             const clickedYear = evt.target.innerHTML;
             if (clickedYear !== selectedYear) {
                 selectedYear = clickedYear
-                buttons.classed("checked", d => d === selectedYear);
+                buttonsDiv.selectAll(".button").classed("checked", d => d === selectedYear);
                 updateVis();
             }
         })
@@ -123,13 +123,13 @@ function vis4(inEn) {
 
         function updateVis() {
 
-            const is24 = selectedYear === '2024';
+            const is24 = selectedYear === '2025';
 
 
-            d3.select("#note4").html(is24 ? "&#8203;" : "*Data is missing for 1986")
-            
-            const xTicks = selectedYear === '2024'
-                ? [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
+            d3.select("#note4").html(is24 ? "&#8203;" : (inEn ? "*Data is missing for 1986" : "*No se dispone de datos para 1986"))
+
+            const xTicks = selectedYear === '2025'
+                ? [0, 1, 2, 3, 4, 5]
                 // ? [0, 1, 2, 3, 4, 5, 6, 7]
                 : [0, 1, 2, 3, 4, 5, 6, 7];
             const xExtent = [xTicks[0], xTicks[xTicks.length - 1]];
@@ -139,8 +139,8 @@ function vis4(inEn) {
                 .range([margin.left, width - margin.right]);
 
             d3.select("#bubble4")
-                .style("top", is24 ? `180px` : "410px")
-                .style("left", is24 ? `${xScale(3)}px` : `${xScale(5)}px`);
+                .style("top", is24 ? `180px` : (inEn ? "420px" : "500px"))
+                .style("left", is24 ? `${xScale(3.5)}px` : `${xScale(5)}px`);
 
             if (window.innerWidth < 470) {
                 d3.select("#bubble4").style("display", "none");
@@ -162,7 +162,7 @@ function vis4(inEn) {
                     .attr("y", height - 20 + 14)
                     .attr("x", d => xScale(d))
                     .text(d => formatNumber(d, inEn));
-                    
+
             const gGroups = svg.selectAll(".group")
                 .data(groups)
                 .join("g")
@@ -179,7 +179,7 @@ function vis4(inEn) {
                     .style("opacity", 0.4)
                     .attr("x", 0)
                     .attr("y", smallScreen ? - 20 : 0)
-            
+
             gGroupText.selectAll("tspan")
                 .data(d => formatType(d))
                 .join("tspan")
@@ -194,7 +194,7 @@ function vis4(inEn) {
                 })))
                 .join("g")
                     .attr("class", "g-level")
-            
+
             gLevel.selectAll(".level-name")
                 .data(d => [d])
                 .join("text")
@@ -223,15 +223,15 @@ function vis4(inEn) {
                             .style("top", `${y}px`)
                             .style("left", `${x + 8}px`)
                             .html(`
-                                <p class="country mb">${d.level}</p>
-                                <p>${inEn ? diff : diff.replace(".", ",")}% ${translate("more pregnancies observed than desired", inEn)}</p>
+                                <p class="country mb">${translate(d.level, inEn)}</p>
+                                <p>${formatNumber(diff, inEn)}% ${translate("more pregnancies observed than desired", inEn)}</p>
                             `);
 
                         tooltipCircle
                             .attr("cx", evt.offsetX)
                             .attr("cy", evt.offsetY)
                             .style("opacity", 1);
-                        
+
                     })
                     .on("mouseout", () => {
                         tooltip.style("display", "none");
@@ -327,7 +327,7 @@ function vis4(inEn) {
                     .attr("x", d => d.idx === 0 ? -xText : xText)
                     .attr("y", height - margin.bottom + 24)
                     .attr("text-anchor", d => d.idx === 0 ? "end" : "start")
-                    .text(d => d.idx === 0 ? d.desired : d.observed);
+                    .text(d => d.idx === 0 ? formatNumber(d.desired, inEn) : formatNumber(d.observed, inEn));
 
             gAvg.selectAll(".avg-line")
                 .data(d => [d])
@@ -356,7 +356,7 @@ function vis4(inEn) {
                     .attr("text-anchor", "middle")
                     .text(translate("National average", inEn))
         }
-        
+
         updateVis();
 
         const tooltipCircle = svg.append("circle")

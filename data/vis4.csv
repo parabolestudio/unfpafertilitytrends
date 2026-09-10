@@ -1,27 +1,27 @@
 level,year,desired,observed,difference,group
-Rural,1986,3.7,6.3,70%,Area of residence
-Rural,2024,2,2.9,45%,Area of residence
-Urban,1986,2.5,3.5,40%,Area of residence
-Urban,2024,1.1,1.5,36%,Area of residence
 Metropolitan Lima,1986,1.9,2.5,32%,Area of residence
-Metropolitan Lima,2024,0.9,1.2,33%,Area of residence
+Metropolitan Lima,2025,1,1.3,30%,Area of residence
+Rural,1986,3.7,6.3,70%,Area of residence
+Rural,2025,1.7,2.5,47%,Area of residence
+Urban,1986,2.5,3.5,40%,Area of residence
+Urban,2025,1.1,1.6,45%,Area of residence
 Amazon,1986,3.4,6,76%,Natural region
-Amazon,2024,1.7,2.5,47%,Natural region
-Highlands,1986,3.2,5.4,69%,Natural region
-Highlands,2024,1.5,2.1,40%,Natural region
+Amazon,2025,1.6,2.4,50%,Natural region
 Coast,1986,2.7,3.8,41%,Natural region
-Coast,2024,1.1,1.5,36%,Natural region
-No education,1986,,,,Education
-No education,2024,1.6,3.3,106%,Education
-Primary or less,1986,3.2,5.4,69%,Education
-Primary or less,2024,1.9,3,58%,Education
+Coast,2025,1.1,1.5,36%,Natural region
+Highlands,1986,3.2,5.4,69%,Natural region
+Highlands,2025,1.4,1.9,36%,Natural region
 Higher,1986,1.5,2,33%,Education
-Higher,2024,1.2,1.4,17%,Education
-Lowest quintile,1986,,,,Income
-Lowest quintile,2024,1.9,2.9,53%,Income
-Intermediate quintile,1986,,,,Income
-Intermediate quintile,2024,1.2,1.5,25%,Income
+Higher,2025,1.2,1.4,17%,Education
+No education,1986,,,,Education
+No education,2025,2.3,4.7,104%,Education
+Primary or less,1986,3.2,5.4,69%,Education
+Primary or less,2025,1.8,2.7,50%,Education
 Highest quintile,1986,,,,Income
-Highest quintile,2024,0.9,1.1,22%,Income
+Highest quintile,2025,1,1.3,30%,Income
+Intermediate quintile,1986,,,,Income
+Intermediate quintile,2025,1.2,1.6,33%,Income
+Lowest quintile,1986,,,,Income
+Lowest quintile,2025,1.7,2.5,47%,Income
 National,1986,2.6,4.1,58%,Average
-National,2024,1.3,1.8,38%,Average
+National,2025,1.2,1.7,42%,Average

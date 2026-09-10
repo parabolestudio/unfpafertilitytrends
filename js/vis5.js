@@ -12,8 +12,8 @@ function vis5(inEn) {
         ? "The gap"
         : "La brecha";
     const calloutParagraph = inEn
-        ? "Violence against adolescents is nearly twice as high as the overall rate"
-        : "La violencia contra las adolescentes es casi el doble que la tasa general";
+        ? "Violence against adolescents is about one third higher than the overall rate"
+        : "La violencia contra las adolescentes es casi un tercio más alta que la tasa general";
     const legendTitle = inEn
         ? "Age group"
         : "Grupo de edad";
@@ -41,7 +41,7 @@ function vis5(inEn) {
     const margin = {
         left: 35,
         top: 10,
-        right: 60,
+        right: isMobile ? 100 : 60,
         bottom: 20
     }
 
@@ -52,7 +52,7 @@ function vis5(inEn) {
         .attr("viewbox", `0 0 ${width} ${height}`);
 
     d3.select("#bubble5")
-        .style("top", isMobile ? "380px" : "230px")
+        .style("top", isMobile ? (inEn ? "380px" : "395px") : "230px")
         .style("left", isMobile ? `${window.innerWidth - 140}px` : "460px");
 
     Promise.all([
@@ -160,7 +160,7 @@ function vis5(inEn) {
                         .attr("cx", evt.offsetX)
                         .attr("cy", evt.offsetY)
                         .style("opacity", 1);
-                    
+
                 })
                 .on("mouseout", () => {
                     tooltip.style("display", "none");

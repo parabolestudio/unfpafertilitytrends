@@ -27,7 +27,7 @@ function vis6(inEn) {
         left: 90,
         top: 60,
         right: 16,
-        bottom: 40
+        bottom: 20
     }
 
     const svg = d3.select("#vis6")
@@ -49,15 +49,13 @@ function vis6(inEn) {
     const pieShift = pieWidth + piePadding;
     const totalWidth = 2 * pieShift + piePadding + 150;
 
-    console.log(totalWidth > window.innerWidth, inEn)
-
     d3.select("#bubble6")
         .style("top", totalWidth > window.innerWidth 
             ? (inEn
                 ? (window.innerWidth < 310 ? "56px" : 
                     (window.innerWidth < 326 ? "40px" : "30px")
                 ) 
-                : (window.innerWidth < 310 ? "56px" : "54px")
+                : (window.innerWidth < 420 ? "68px" : (window.innerWidth < 424 ? "46px" : "28px"))
             )
             : "50px")
         .style("left", totalWidth > window.innerWidth ? "10px" : `${2 * pieShift + piePadding}px`);

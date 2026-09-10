@@ -68,6 +68,10 @@ body {
     flex-direction: row;
 }
 
+#legend4 .legend-item:first-child {
+    width: 210px;
+}
+
 #legend4 > * {
     line-height: 72px;
 }
@@ -287,6 +291,10 @@ span.button:last-child {
     #legend4 .legend-item {
         display: flex;
         flex-direction: column;
+    }
+
+    #legend4 .legend-item:first-child {
+        width: 122px;
     }
 
 
